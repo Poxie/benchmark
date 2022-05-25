@@ -1,0 +1,20 @@
+.header-text {
+    h1 {
+        font-size: 60px;
+        margin: 0;
+    }
+}
+.addon-text {
+    margin-top: 15px;
+    height: 75px;
+    overflow: hidden;
+}
+.addon-text-container {
+    transition: transform .3s;
+    display: block;
+    height: 100%;
+
+    h1 {
+        height: 100%;
+    }
+}
