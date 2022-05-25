@@ -30,7 +30,9 @@ export const Navbar = () => {
                 <NavbarTitle />
                 <NavbarTabs />
             </div>
-            <NavbarOptions />
+            {device !== 'mobile' && (
+                <NavbarOptions />
+            )}
         </div>
     )
 }
