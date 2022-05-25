@@ -1,8 +1,7 @@
 // Header styles
 .header {
-    padding: 0 var(--spacing-primary);
     margin: 0 auto;
-    height: 60vh;
+    height: 600px;
     display: flex;
     align-items: center;
     position: relative;
@@ -20,6 +19,7 @@
 // Animated text styles
 .header-text {
     width: var(--main-width);
+    max-width: var(--main-width-max);
     margin: 0 auto;
 
     h1 {
@@ -29,6 +29,7 @@
     span {
         font-size: 18px;
         width: 560px;
+        max-width: 100%;
         display: block;
         margin-top: calc(var(--spacing-primary) + 7px);
     }
@@ -45,5 +46,28 @@
 
     h1 {
         height: 100%;
+    }
+}
+@media (max-width: 650px) {
+    .header-text {
+        text-align: center;
+        
+        h1 {
+            font-size: 50px;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .header {
+        height: 350px;
+    }
+    .header-text {
+        h1 {
+            font-size: 35px;
+        }
+        span {
+            margin-top: 0;
+            font-size: 16px;
+        }
     }
 }
