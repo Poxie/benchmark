@@ -56,6 +56,9 @@ export const HomeHeaderText = () => {
                     })}
                 </div>
             </div>
+            <span>
+                A place to challenge each other with mind-boggling challenges! Prove yourself by receiving high scores and get displayed on the leaderboard!
+            </span>
         </div>
     )
 }
