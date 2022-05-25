@@ -1,0 +1,29 @@
+.container {
+    background-color: var(--background-primary);
+    padding: var(--spacing-primary);
+    border-bottom: 3px solid var(--background-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.left, .tabs {
+    display: flex;
+    align-items: center;
+}
+.title {
+    margin: 0;
+    font-size: 22px;
+    margin-right: var(--spacing-primary);
+}
+.tabs {
+    a {
+        margin-right: calc(var(--spacing-primary) / 2);
+        display: block;
+        color: var(--text-secondary);
+        transition: color .2s;
+
+        &:hover {
+            color: var(--text-primary);
+        }
+    }
+}
