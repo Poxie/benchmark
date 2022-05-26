@@ -13,6 +13,7 @@ export const Carousel: React.FC<{
 }> = ({ items: _items, renderItem: RenderItem, itemGap, delay=3000 }) => {
     const gap = itemGap || 15;
     const container = useRef<HTMLDivElement>(null);
+    const [shouldTransform, setShouldTransform] = useState(true);
     const [controllsDisabled, setControllsDisabled] = useState(false)
     const [items, setItems] = useState(_items);
     const [index, setIndex] = useState(0);
@@ -33,14 +34,17 @@ export const Carousel: React.FC<{
         setTimeout(() => setControllsDisabled(false), 600);
     }, []);
 
-    // Defining item width
-    useEffect(() => {
-        if(!refs.current) return;
-        itemWidth.current = refs.current[0].current?.getBoundingClientRect().width || 0;
-    }, []);
+    const updateTransform = (index: number) => {
+        const iWidth = itemWidth.current;
+        setTimeout(() => {
+            if(!container.current) return;
 
-    // Function to go right
+            container.current.style.transition = '.5s transform';
+            container.current.style.transform = `translate3d(-${index * iWidth + index * gap}px, 0, 0)`;
+        }, 20);
+    }
     const right = () => {
+        const iWidth = itemWidth.current;
         setIndex(prev => {
             if(!container.current) return prev;
             let newIndex = prev + 1;
@@ -48,74 +52,71 @@ export const Carousel: React.FC<{
             if(newIndex >= 2) {
                 setItems(prev => {
                     const newItems = [...prev];
-                    newItems.push(prev.shift());
+                    newItems.push(newItems.shift());
                     return newItems;
                 })
+
                 container.current.style.transition = 'none';
-                container.current.style.transform = `translate3d(-${itemWidth.current * (newIndex - 2) + gap * (newIndex - 2)}px, 0, 0)`;
+                container.current.style.transform = `translate3d(-${(prev - 1) * iWidth + (prev - 1) * gap}px, 0, 0)`;
                 newIndex = prev;
-
-                setTimeout(() => {
-                    if(!container.current) return;
-                    container.current.style.transition = '.5s transform';
-
-                    setTimeout(() => {
-                        if(!container.current) return;
-                        container.current.style.transform = `translate3d(-${itemWidth.current * newIndex + gap * newIndex}px,0,0)`;
-                    }, 50);
-                }, 10);
-            } else {
-                container.current.style.transform = `translate3d(-${itemWidth.current * newIndex + gap * newIndex}px, 0, 0)`;
             }
+            updateTransform(newIndex);
 
             return newIndex;
         })
     }
-    // Function to go left
     const left = () => {
+        const iWidth = itemWidth.current;
         setIndex(prev => {
             if(!container.current) return prev;
-
             let newIndex = prev - 1;
+
             if(newIndex < 2) {
                 setItems(prev => {
                     const newItems = [...prev];
                     newItems.unshift(newItems.pop());
                     return newItems;
                 })
-                container.current.style.transition = 'none';
-                container.current.style.transform = `translate3d(-${itemWidth.current * (newIndex + 2) + gap * (newIndex + 2)}px, 0, 0)`;
-                newIndex = prev;
 
-                setTimeout(() => {
-                    if(!container.current) return;
-                    container.current.style.transition = '.5s transform';
-                    
-                    setTimeout(() => {
-                        if(!container.current) return;
-                        container.current.style.transform = `translate3d(-${itemWidth.current * newIndex + gap * newIndex}px, 0, 0)`;
-                    }, 50);
-                }, 10)
-            } else {
-                container.current.style.transform = `translate3d(-${itemWidth.current * newIndex + gap * newIndex}px, 0, 0)`;
+                container.current.style.transition = 'none';
+                container.current.style.transform = `translate3d(-${(prev + 1) * iWidth + (prev + 1) * gap}px, 0, 0)`;
+                newIndex = prev;
             }
+            updateTransform(newIndex);
 
             return newIndex;
         })
-    };
-
-    // Start auto-sliding on mount
+    }
+    
+    // On mount, start auto-sliding
     useEffect(() => {
         if(!container.current) return;
-
-        if(device === 'mobile') {
+        if(device === 'mobile' || !shouldTransform) {
             container.current.style.transform = `translate3d(0,0,0)`;
             return;
-        };
+        }
         
-        interval.current = setInterval(right, delay);
-        return () => clearInterval(interval.current);
-    }, [controllsDisabled, device]);
+        const interval = setInterval(right, delay);
+        return () => clearInterval(interval);
+    }, [controllsDisabled, shouldTransform, device]);
+
+    // If carousel is fully visible, stop animating
+    useEffect(() => {
+        const resize = () => {
+            const allItemWidth = items.length * itemWidth.current + gap * items.length;
+            console.log(allItemWidth, window.innerWidth);
+            setShouldTransform(!(allItemWidth < window.innerWidth));
+        }
+
+        window.addEventListener('resize', resize);
+        return () => window.removeEventListener('resize', resize);
+    }, []);
+
+    // Defining item width
+    useEffect(() => {
+        if(!refs.current) return;
+        itemWidth.current = refs.current[0].current?.getBoundingClientRect().width || 0;
+    }, []);
 
     return(
         <div 
@@ -126,7 +127,7 @@ export const Carousel: React.FC<{
         >
             <div 
                 className={styles['container-content']}
-                style={{ gap }}
+                style={{ gap, justifyContent: shouldTransform ? 'unset' : 'center' }}
                 ref={container}
             >
                 {items.map((item, key) => {
@@ -140,7 +141,7 @@ export const Carousel: React.FC<{
                 })}
             </div>
             
-            {device !== 'mobile' && (
+            {device !== 'mobile' && shouldTransform && (
                 <div className={styles['carousel-controlls']}>
                     <div onClick={!controllsDisabled ? () => handleClick('left') : undefined}>
                         <ArrowCircleIcon />
