@@ -146,7 +146,7 @@
 }
 .carousel-item-category {
     color: var(--text-secondary);
-    font-size: 16px;
+    font-size: 15px;
     margin-top: 10px;
 }
 
@@ -174,6 +174,7 @@
     max-width: var(--main-width-max);
     margin: 0 auto;
     display: flex;
+    align-items: center;
     gap: var(--spacing-primary);
     justify-content: space-between;
     transition: transform 1s, opacity 1s;
@@ -207,5 +208,94 @@
 @media (max-width: 550px) {
     .tile {
         padding: 80px 20px;
+    }
+}
+// Tile svg animation
+#card-one {
+    animation: card-one 8s infinite;
+}
+#card-two {
+    animation: card-two 8s infinite;
+}
+#card-three {
+    animation: card-three 8s infinite;
+}
+#cursor {
+    --start-position: translate(10%, 40%) rotate(-70deg);
+    animation: cursor 8s infinite;
+    transform: var(--start-position);
+}
+@keyframes cursor {
+    0%,2% {
+        transform: var(--start-position);
+    }
+    25% {
+        transform: translate(-2%, 17%) rotate(-50deg);
+    }
+    40% {
+        transform: translate(30%, 10%) rotate(-45deg);
+    }
+    55% {
+        transform: translate(42%, 14%) rotate(-25deg);
+    }
+    70% {
+        transform: translate(12%, 17%) rotate(-45deg);
+    }
+    85% {
+        transform: translate(70%, 22%) rotate(-60deg);
+    }
+    90% {
+        transform: translate(71%, 35%) rotate(-75deg) scale(.8);
+    }
+    93.5% {
+        transform: translate(71%, 32%) rotate(-70deg) scale(1);
+    }
+}
+@keyframes card-one {
+    0%,5% {
+        transform: translateY(-15px);
+    }
+    8%,30% {
+        transform: translateY(-15px);
+    }
+    35%,62% {
+        transform: translateY(0);
+    }
+    67%, 72% {
+        transform: translateY(-15px);
+    }
+    77%,97% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+@keyframes card-two {
+    0%,30% {
+        transform: translate(0);
+    }
+    35%, 60% {
+        transform: translateY(-15px);
+    }
+    65%,70% {
+        transform: translate(0);
+    }
+    75%,75.5% {
+        transform: translateY(-15px);
+    }
+    79%,94% {
+        transform: translate(0);
+    }
+    96% {
+        transform: translateY(-15px);
+    }
+}
+@keyframes card-three {
+    0%, 75% {
+        transform: translate(0);
+    }
+    80%,95% {
+        transform: translateY(-15px);
     }
 }
