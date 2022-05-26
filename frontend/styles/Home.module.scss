@@ -89,6 +89,7 @@
     cursor: pointer;
     transition: margin-top .3s;
     margin-top: var(--default-margin);
+    position: relative;
 
     &:hover {
         margin-top: 0;
@@ -103,6 +104,21 @@
     }
     span {
         display: block;
+    }
+}
+.item-state {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 120px;
+    background-color: var(--color-primary);
+    color: var(--text-light);
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 600;
+
+    &.beta {
+        background-color: var(--color-red);
     }
 }
 .carousel-item-content {

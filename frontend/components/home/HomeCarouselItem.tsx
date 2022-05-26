@@ -8,14 +8,23 @@ export const HomeCarouselItem: React.FC<{
     category: string;
     icon: FunctionComponent;
     path: string;
-}> = ({ text, category, path, icon: Icon }) => {
+    comingSoon: boolean;
+    isBeta: boolean;
+}> = ({ text, category, path, icon: Icon, comingSoon, isBeta }) => {
     return(
         <div className={styles['carousel-item']}>
             <Link href={path}>
                 <div className={styles['carousel-item-content']}>
+                    {(comingSoon || isBeta) && (
+                        <div className={styles['item-state'] + (isBeta ? ` ${styles['beta']}` : '')}>
+                            {comingSoon ? 'Coming Soon' : 'BETA'}
+                        </div>
+                    )}
+                    
                     <div className={styles['carousel-item-icon']}>
                         <Icon />
                     </div>
+
                     <div className={styles['carousel-item-text']}>
                         <span className={styles['carousel-item-title']}>
                             {text}
