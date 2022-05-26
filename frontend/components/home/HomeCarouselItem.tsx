@@ -13,7 +13,7 @@ export const HomeCarouselItem: React.FC<{
 }> = ({ text, category, path, icon: Icon, comingSoon, isBeta }) => {
     return(
         <div className={styles['carousel-item']}>
-            <Link href={path}>
+            <Link href={comingSoon ? '' : path}>
                 <div className={styles['carousel-item-content']}>
                     {(comingSoon || isBeta) && (
                         <div className={styles['item-state'] + (isBeta ? ` ${styles['beta']}` : '')}>
