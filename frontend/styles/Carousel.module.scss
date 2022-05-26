@@ -1,0 +1,26 @@
+.container {
+    overflow: hidden;
+    padding: 0 40px;
+}
+.container-content {
+    display: flex;
+    max-width: 100%;
+    transition: transform .5s;
+}
+.carousel-controlls {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-top: var(--spacing-primary);
+
+    svg {
+        width: 40px;
+        cursor: pointer;
+        fill: var(--text-primary);
+    }
+    &>div:first-child {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+}
