@@ -17,7 +17,6 @@ export const Carousel: React.FC<{
     const [controllsDisabled, setControllsDisabled] = useState(false)
     const [items, setItems] = useState(_items);
     const [index, setIndex] = useState(0);
-    const interval = useRef<any>();
     const refs = useRef<RefObject<HTMLDivElement>[]>([]);
     const itemWidth = useRef(0);
     const device = useDeviceType();
@@ -107,6 +106,7 @@ export const Carousel: React.FC<{
             console.log(allItemWidth, window.innerWidth);
             setShouldTransform(!(allItemWidth < window.innerWidth));
         }
+        resize();
 
         window.addEventListener('resize', resize);
         return () => window.removeEventListener('resize', resize);
@@ -134,8 +134,8 @@ export const Carousel: React.FC<{
                     const ref = React.createRef<HTMLDivElement>();
                     refs.current.push(ref);
                     return(
-                        <div className={styles['item']} key={key} ref={ref}>
-                            <RenderItem {...item} key={key} />
+                        <div key={key} ref={ref}>
+                            <RenderItem {...item} />
                         </div>
                     )
                 })}
