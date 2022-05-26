@@ -3,12 +3,14 @@ import styles from '../../styles/Carousel.module.scss';
 import { FunctionComponent } from 'react';
 import { ArrowCircleIcon } from '../../icons/ArrowCircleIcon';
 import { useCallback } from 'react';
+import { useDeviceType } from '../../hooks/useDeviceType';
 
 export const Carousel: React.FC<{
     items: any[];
     renderItem: FunctionComponent<any>;
     itemGap?: number;
-}> = ({ items: _items, renderItem: RenderItem, itemGap }) => {
+    delay?: number;
+}> = ({ items: _items, renderItem: RenderItem, itemGap, delay=3000 }) => {
     const gap = itemGap || 15;
     const container = useRef<HTMLDivElement>(null);
     const [controllsDisabled, setControllsDisabled] = useState(false)
@@ -17,6 +19,7 @@ export const Carousel: React.FC<{
     const interval = useRef<any>();
     const refs = useRef<RefObject<HTMLDivElement>[]>([]);
     const itemWidth = useRef(0);
+    const device = useDeviceType();
 
     // Making sure it doesn't auto slide at same time as user
     const handleClick = useCallback((direction: 'right' | 'left') => {
@@ -103,13 +106,23 @@ export const Carousel: React.FC<{
 
     // Start auto-sliding on mount
     useEffect(() => {
-        interval.current = setInterval(right, 3000);
+        if(!container.current) return;
+
+        if(device === 'mobile') {
+            container.current.style.transform = `translate3d(0,0,0)`;
+            return;
+        };
+        
+        interval.current = setInterval(right, delay);
         return () => clearInterval(interval.current);
-    }, [controllsDisabled]);
+    }, [controllsDisabled, device]);
 
     return(
         <div 
             className={styles['container']}
+            style={{
+                overflowX: device !== 'mobile' ? 'hidden' : 'auto'
+            }}
         >
             <div 
                 className={styles['container-content']}
@@ -127,14 +140,16 @@ export const Carousel: React.FC<{
                 })}
             </div>
             
-            <div className={styles['carousel-controlls']}>
-                <div onClick={!controllsDisabled ? () => handleClick('left') : undefined}>
-                    <ArrowCircleIcon />
+            {device !== 'mobile' && (
+                <div className={styles['carousel-controlls']}>
+                    <div onClick={!controllsDisabled ? () => handleClick('left') : undefined}>
+                        <ArrowCircleIcon />
+                    </div>
+                    <div onClick={!controllsDisabled ? () => handleClick('right') : undefined}>
+                        <ArrowCircleIcon />
+                    </div>
                 </div>
-                <div onClick={!controllsDisabled ? () => handleClick('right') : undefined}>
-                    <ArrowCircleIcon />
-                </div>
-            </div>
+            )}
         </div>
     )
 }
