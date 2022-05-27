@@ -12,8 +12,8 @@ import { HomeCarouselItem } from './HomeCarouselItem';
 
 const items = [
     { text: 'Memory Sequence', category: 'Memory', path: '/memory-sequence', icon: SequenceIcon, comingSoon: true },
-    { text: 'Chimp Test', category: 'Memory', path: '/chimp-test', icon: ChimpIcon, comingSoon: false, isBeta: true },
-    { text: 'Number Memory', category: 'Memory', path: '/numeber-memory', icon: NumberMemoryIcon, comingSoon: true },
+    { text: 'Chimp Test', category: 'Memory', path: '/chimp-test', icon: ChimpIcon, comingSoon: true },
+    { text: 'Number Memory', category: 'Memory', path: '/number-memory', icon: NumberMemoryIcon, comingSoon: false, isBeta: true },
     { text: 'Word Memory', category: 'Memory', path: '/word-memory', icon: WordMemoryIcon, comingSoon: true },
     { text: 'Aim Training', category: 'Aim', path: '/aim-training', icon: AimTrainingIcon, comingSoon: true },
     { text: 'Typing Speed', category: 'Typing', path: '/typing-speed', icon: TypingIcon, comingSoon: true },
