@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import styles from '../../styles/NumberMemory.module.scss';
+import styles from '../../styles/GameComponents.module.scss';
 import { Button } from '../button';
 
-export const NumberMemoryStartScreen: React.FC<{
+export const StartScreen: React.FC<{
     onStart: () => void;
-}> = ({ onStart }) => {
+    gameName: string;
+    gameDescription: string;
+}> = ({ onStart, gameName, gameDescription }) => {
     useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => {
             if(e.key === 'Enter') {
@@ -19,10 +21,10 @@ export const NumberMemoryStartScreen: React.FC<{
     return(
         <div className={styles['start-screen']}>
             <h1>
-                Welcome to Number Memory!
+                Welcome to {gameName}!
             </h1>
             <span>
-                Remember the previous number while new digits get added.
+                {gameDescription}
             </span>
             <Button 
                 type={'light'} 

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import styles from '../../styles/NumberMemory.module.scss';
-import { Button } from '../button';
-import { NumberMemoryEndScreen } from './NumberMemoryEndScreen';
-import { NumberMemoryGame } from './NumberMemoryGame';
-import { NumberMemoryStartScreen } from './NumberMemoryStartScreen';
+import { FunctionComponent } from 'react';
+import styles from '../../styles/GameComponents.module.scss';
+import { EndScreen } from './EndScreen';
+import { StartScreen } from './StartScreen';
 
-export const NumberMemoryMainScreen = () => {
+export const MainScreen: React.FC<{
+    gameComponent: FunctionComponent<{onEnd: (score: number) => void}>;
+    gameName: string;
+    gameDescription: string;
+}> = ({ gameComponent: GameComponent, gameName, gameDescription }) => {
     const [score, setScore] = useState(0);
     const [hasStarted, setHasStarted] = useState(false);
     const [hasFailed, setHasFailed] = useState(false);
@@ -21,14 +24,14 @@ export const NumberMemoryMainScreen = () => {
         <div className={styles['game']}>
             <div className={styles['game-container']}>
                 {!hasStarted && !hasFailed && (
-                    <NumberMemoryStartScreen onStart={onStart} />
+                    <StartScreen onStart={onStart} gameName={gameName} gameDescription={gameDescription} />
                 )}
                 {!hasStarted && hasFailed && (
-                    <NumberMemoryEndScreen score={score} onRestart={onStart} />
+                    <EndScreen score={score} onRestart={onStart} />
                 )}
 
                 {hasStarted && (
-                    <NumberMemoryGame onEnd={onEnd} />
+                    <GameComponent onEnd={onEnd} />
                 )}
             </div>
         </div>

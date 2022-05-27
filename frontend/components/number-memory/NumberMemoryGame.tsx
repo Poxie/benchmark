@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/NumberMemory.module.scss';
-import { NumberMemoryCountdown } from './NumberMemoryCountDown';
+import { Countdown } from '../game-components/Countdown';
 
 const getRandomNumber = () => {
     const number = Math.floor(Math.random() * 10);
@@ -66,7 +66,7 @@ export const NumberMemoryGame: React.FC<{
             )}
             
             {isViewing && (
-                <NumberMemoryCountdown 
+                <Countdown 
                     duration={5000}
                     onEnd={countdownEnd}
                 />

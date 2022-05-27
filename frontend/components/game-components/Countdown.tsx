@@ -1,13 +1,13 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import styles from '../../styles/NumberMemory.module.scss';
+import React, { useEffect, useRef } from 'react';
+import styles from '../../styles/GameComponents.module.scss';
 
-export const NumberMemoryCountdown: React.FC<{
+export const Countdown: React.FC<{
     duration: number;
     onEnd: () => void;
 }> = ({ duration, onEnd }) => {
     const ref = useRef<HTMLDivElement>(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         setTimeout(() => {
             if(!ref.current) return;
             ref.current.style.width = '100%';

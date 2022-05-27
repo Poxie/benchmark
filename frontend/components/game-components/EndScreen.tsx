@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../../styles/NumberMemory.module.scss';
+import styles from '../../styles/GameComponents.module.scss';
 import { Button } from '../button';
 
-export const NumberMemoryEndScreen: React.FC<{
+export const EndScreen: React.FC<{
     score: number;
     onRestart: () => void;
 }> = ({ score, onRestart }) => {
