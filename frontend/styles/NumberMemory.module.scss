@@ -1,0 +1,61 @@
+.game {
+    height: 70vh;
+    background-color: var(--color-primary);
+    color: var(--text-light);
+
+    input {
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: var(--border-radius-primary) var(--border-radius-primary) calc(var(--border-radius-primary) / 2) calc(var(--border-radius-primary) / 2);
+        color: var(--text-light);
+        background-color: var(--color-secondary);
+        border-bottom: var(--color-tertiary) 4px solid;
+        padding: 15px;
+        font-size: 18px;
+    }
+}
+.game-container {
+    max-width: var(--main-width-max);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.start-screen, .end-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 50px;
+        text-align: center;
+    }
+    span {
+        font-size: 18px;
+        opacity: .7;
+        text-align: center;
+    }
+}
+.button {
+    margin-top: 40px;
+    min-width: 180px;
+    padding: 15px;
+}
+.countdown {
+    width: 0;
+    height: 12px;
+    background-color: var(--color-tertiary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: .3s width;
+}
+
+.number {
+    font-size: 55px;
+}
