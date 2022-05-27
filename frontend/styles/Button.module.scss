@@ -5,8 +5,18 @@
     border-radius: 10px;
     cursor: pointer;
     transition: background-color .3s;
+    text-align: center;
 
     &:hover {
         background-color: var(--color-secondary);
+    }
+    &.light {
+        background-color: #fff;
+        color: var(--text-primary);
+        font-weight: 600;
+
+        &:hover {
+            background-color: var(--background-tertiary);
+        }
     }
 }
