@@ -19,6 +19,7 @@
     margin-right: var(--spacing-primary);
 }
 .tabs {
+    z-index: 14;
     a {
         margin-right: calc(var(--spacing-primary) / 2);
         display: block;
