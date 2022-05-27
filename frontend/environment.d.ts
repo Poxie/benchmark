@@ -5,6 +5,7 @@ declare global {
             NEXT_PUBLIC_WEBSITE_NAME: string;
             NEXT_PUBLIC_WEBSITE_DESCRIPTION: string;
             NEXT_PUBLIC_CONTACT_EMAIL: string;
+            NEXT_PUBLIC_WORD_API: string;
         }
     }
 }
