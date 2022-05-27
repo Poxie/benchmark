@@ -2,8 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/NumberMemory.module.scss';
 import { Countdown } from '../game-components/Countdown';
 
-const getRandomNumber = () => {
-    const number = Math.floor(Math.random() * 10);
+const getRandomNumber = (length: number) => {
+    let number = '';
+    for(let i = 0; i < length; i++) {
+        number += Math.floor(Math.random() * 10).toString();
+    }
     return number;
 }
 export const NumberMemoryGame: React.FC<{
@@ -11,14 +14,14 @@ export const NumberMemoryGame: React.FC<{
 }> = ({ onEnd }) => {
     const [score, setScore] = useState(0); 
     const [isViewing, setIsViewing] = useState(true);
-    const [number, setNumber] = useState(getRandomNumber());
+    const [number, setNumber] = useState(getRandomNumber(1));
     const input = useRef<HTMLInputElement>(null);
 
     // Creating new number and increasing score
     const nextNumber = () => {
         setScore(prev => prev + 1);
-        const newNumber = getRandomNumber();
-        setNumber(prev => parseInt(prev.toString() + newNumber.toString()));
+        const newNumber = getRandomNumber(number.toString().length + 1);
+        setNumber(newNumber);
         setIsViewing(true);
     }
     // On coundown end
@@ -26,7 +29,7 @@ export const NumberMemoryGame: React.FC<{
         setIsViewing(false);
     }
     // Compare answer with actual number
-    const checkAnswer = (input: number, number: number) => {
+    const checkAnswer = (input: string, number: string) => {
         if(input === number) {
             nextNumber();
         } else {
@@ -36,7 +39,7 @@ export const NumberMemoryGame: React.FC<{
     // If key is enter, compare input with actual number
     const updateInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if(e.key === 'Enter') {
-            checkAnswer(parseInt(e.currentTarget.value), number);
+            checkAnswer(e.currentTarget.value, number);
         }
     }
 

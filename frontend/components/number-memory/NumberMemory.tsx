@@ -9,7 +9,7 @@ export const NumberMemory = () => {
             <MainScreen 
                 gameComponent={NumberMemoryGame}
                 gameName={'Number Memory'}
-                gameDescription={'Remember the previous number while new digits get added.'}
+                gameDescription={'Remember the number shown with increasing difficulty.'}
             />
         </div>
     )
