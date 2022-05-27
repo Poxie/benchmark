@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../../styles/NumberMemory.module.scss';
 import { Button } from '../button';
 
 export const NumberMemoryStartScreen: React.FC<{
     onStart: () => void;
 }> = ({ onStart }) => {
+    useEffect(() => {
+        const onKeyDown = (e: KeyboardEvent) => {
+            if(e.key === 'Enter') {
+                onStart();
+            }
+        }
+
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, []);
+
     return(
         <div className={styles['start-screen']}>
             <h1>
