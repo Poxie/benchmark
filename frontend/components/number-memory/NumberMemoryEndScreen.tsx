@@ -12,7 +12,7 @@ export const NumberMemoryEndScreen: React.FC<{
                 You scored {score} point{score !== 1 ? 's' : ''}.
             </h1>
             <span>
-                Compare your score with others below, or try again to get a higher score!
+                Compare your score with others' below, or try again to get a higher score!
             </span>
             <Button 
                 type={'light'}
