@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeLeaderboardIcon } from '../../icons/HomeLeaderboardIcon';
+import { HomeLeaderboardAnimation } from './HomeLeaderboardAnimation';
 import { HomeTile } from './HomeTile';
 import { HomeTileAnimation } from './HomeTileAnimation';
 
@@ -9,7 +9,7 @@ export const HomeTiles = () => {
             <HomeTile 
                 title={'Play games and increase your rank'}
                 description={'There are many different games which allows you to show your skills on your specific skillset with your specific gamemode!'}
-                media={<HomeLeaderboardIcon />}
+                media={<HomeLeaderboardAnimation />}
             />
             <HomeTile 
                 title={'Large varity of games and fun'}
