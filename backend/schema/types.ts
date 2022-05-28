@@ -3,3 +3,9 @@ export type User = {
     username: string;
     name: string;
 }
+
+export type AuthData = {
+    id: string;
+    token: string;
+    expiresIn: string;
+}
