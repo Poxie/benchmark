@@ -7,13 +7,13 @@ const typeDefs = gql`
         login(username: String!, password: String!): AuthData
     }
     type Mutation {
-        createUser(username: String!, password: String!, name: String!): User!
+        createUser(username: String!, password: String!, name: String): User!
     }
 
     type User {
         id: ID!
         username: String!
-        name: String!
+        name: String
     }
     type AuthData {
         id: String!
