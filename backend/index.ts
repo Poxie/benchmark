@@ -5,10 +5,12 @@ import typeDefs from './schema/typeDefs';
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
 import auth, { ExtendedRequest } from './middleware/auth';
+import cors from 'cors';
 import entities from './entities';
 dotenv.config();
 
 const app = express();
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN }));
 
 (async () => {
     // MySQL connection
