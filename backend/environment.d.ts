@@ -8,6 +8,7 @@ declare global {
             MYSQL_PASSWORD: string;
             MYSQL_DATABASE: string;
             BCRYPT_SALT_ROUNDS: number;
+            JWT_SECRET_KEY: string;
         }
     }
 }
