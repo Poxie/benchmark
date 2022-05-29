@@ -1,4 +1,4 @@
-import { SET_USER, UserReducer } from "./types";
+import { SET_USER, SET_USER_LOADING, UserReducer } from "./types";
 
 const initialState = {
     user: null,
@@ -13,6 +13,12 @@ export const userReducer: UserReducer = (state=initialState, action) => {
                 loading: false
             }
             break;
+        }
+        case SET_USER_LOADING: {
+            return {
+                ...state,
+                loading: action.payload
+            }
         }
         default: {
             return state;

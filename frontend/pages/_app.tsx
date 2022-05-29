@@ -8,7 +8,7 @@ import { setContext } from '@apollo/client/link/context';
 import { Provider, useDispatch } from 'react-redux';
 import { AppDispatch, store } from '../redux/store';
 import { useEffect } from 'react';
-import { setUser } from '../redux/user/actions';
+import { setUser, setUserLoading } from '../redux/user/actions';
 import { GET_ME } from '../graphql/queries';
 import { PopupProvider } from '../contexts/PopupProvider';
 
@@ -63,12 +63,14 @@ const AuthLayer: React.FC<{children: any}> = ({ children }) => {
 
   // Fetching and storing logged in user
   useEffect(() => {
-    getMe().then(({ data }) => {
+    getMe().then(({ data, error }) => {
       const user = data?.getMe;
 
       // If logged in user found, set user in redux store
       if(user) {
         dispatch(setUser(user));
+      } else {
+        dispatch(setUserLoading(false));
       }
     })
   }, []);
