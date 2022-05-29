@@ -3,6 +3,7 @@
 
     background-color: var(--background-primary);
     padding: var(--spacing-primary);
+    height: var(--navbar-height);
     border-bottom: var(--border-width) solid var(--background-secondary);
     display: flex;
     align-items: center;
@@ -38,6 +39,7 @@
 }
 .user {
     cursor: pointer;
+    padding: 8px 0;
 }
 
 @media (max-width: 720px) {
