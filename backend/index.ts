@@ -10,7 +10,7 @@ import entities from './entities';
 dotenv.config();
 
 const app = express();
-app.use(cors({ origin: process.env.FRONTEND_ORIGIN }));
+app.use(cors({ origin: [process.env.FRONTEND_ORIGIN as string, process.env.GRAPHQL_TESTING_ENDPOINT as string] }));
 
 (async () => {
     // MySQL connection

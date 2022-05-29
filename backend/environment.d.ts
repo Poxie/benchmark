@@ -10,6 +10,7 @@ declare global {
             BCRYPT_SALT_ROUNDS: number;
             JWT_SECRET_KEY: string;
             FRONTEND_ORIGIN: string;
+            GRAPHQL_TESTING_ENDPOINT: string;
         }
     }
 }
