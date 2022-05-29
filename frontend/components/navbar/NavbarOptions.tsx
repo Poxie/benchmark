@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useAppSelector } from '../../redux/store';
 import { selectUserInfo, selectUserIsLoading } from '../../redux/user/selectors';
@@ -5,6 +6,7 @@ import { Button } from '../button';
 import { NavbarUser } from './NavbarUser';
 
 export const NavbarOptions = () => {
+    const router = useRouter();
     const loading = useAppSelector(selectUserIsLoading);
     const userInfo = useAppSelector(selectUserInfo);
 
@@ -15,7 +17,7 @@ export const NavbarOptions = () => {
         userInfo ? (
             <NavbarUser user={userInfo} />
         ) : (
-            <Button>
+            <Button onClick={() => router.push(`/login`)}>
                 Sign in
             </Button>
         )
