@@ -24,12 +24,14 @@ const typeDefs = gql`
     type Score {
         id: String!
         userId: String!
+        user: User!
         gameId: String!
         score: Int!
     }
     type HighScore {
         id: String!
         userId: String!
+        user: User!
         gameId: String!
         score: Int!
         position: Int!
