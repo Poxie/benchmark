@@ -9,6 +9,9 @@ export type Score = {
     gameId: string;
     score: number;
 }
+export type ScoreExtended = Score & {
+    position: number;
+}
 
 export type AuthData = {
     id: string;

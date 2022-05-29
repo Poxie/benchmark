@@ -23,3 +23,7 @@ export type GetUserScores = (_:any, args: {
     id: string;
     gameId: string;
 }) => Promise<Score[]>
+
+export type GetGameLeaderboard = (_:any, args: {
+    gameId: string;
+}) => Promise<Score[]>
