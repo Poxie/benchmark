@@ -3,6 +3,12 @@ export type User = {
     username: string;
     name?: string;
 }
+export type Score = {
+    id: string;
+    userId: string;
+    gameId: string;
+    score: number;
+}
 
 export type AuthData = {
     id: string;

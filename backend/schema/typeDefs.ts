@@ -9,6 +9,7 @@ const typeDefs = gql`
     }
     type Mutation {
         createUser(username: String!, password: String!, name: String): User!
+        createScore(userId: String!, gameId: String!, score: Int!): Score!
     }
 
     type User {
@@ -16,6 +17,13 @@ const typeDefs = gql`
         username: String!
         name: String
     }
+    type Score {
+        id: String!
+        userId: String!
+        gameId: String!
+        score: Int!
+    }
+
     type AuthData {
         id: String!
         token: String!

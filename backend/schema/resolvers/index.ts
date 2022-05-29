@@ -1,3 +1,4 @@
+import { CREATE_SCORE } from "./mutations/Scores";
 import { CREATE_USER } from "./mutations/User";
 import { GET_ALL_USERS, GET_ME, GET_USER_BY_USERNAME, LOGIN } from "./queries/User";
 
@@ -9,7 +10,8 @@ const resolvers = {
         getMe: GET_ME
     },
     Mutation: {
-        createUser: CREATE_USER
+        createUser: CREATE_USER,
+        createScore: CREATE_SCORE
     }
 }
 
