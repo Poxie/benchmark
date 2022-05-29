@@ -1,5 +1,5 @@
 import { Scores } from "../../../entities/Scores";
-import { ScoreExtended } from "../../types";
+import { Score, ScoreExtended } from "../../types";
 import { GetGameLeaderboard, GetUserHighScore, GetUserScores } from "./types";
 
 export const GET_USER_HIGH_SCORE: GetUserHighScore = async (_, { id, gameId }) => {
@@ -39,12 +39,21 @@ export const GET_GAME_LEADERBOARD: GetGameLeaderboard = async (_, { gameId }) =>
         },
         take: 50
     });
-    const scoresWithPosition: ScoreExtended[] = scores.map((score, key) => {
-        return {
-            ...score,
-            position: key + 1
-        }
-    })
 
-    return scoresWithPosition;
+    const filteredScores: ScoreExtended[] = [];
+    for(let i = 0; i < scores.length; i++) {
+        const score = scores[i];
+
+        // Making sure duplicate users aren't on the leaderboard
+        if(!filteredScores.find(s => s.userId === score.userId)) {
+            filteredScores.push({
+                ...score,
+                
+                // Determining leaderboard position
+                position: i + 1
+            });
+        }
+    }
+
+    return filteredScores;
 }
