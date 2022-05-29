@@ -9,3 +9,8 @@ export type AuthData = {
     token: string;
     expiresIn: string;
 }
+
+export type Context = {
+    userId: string;
+    auth: boolean;
+}
