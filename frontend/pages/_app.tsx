@@ -10,6 +10,7 @@ import { AppDispatch, store } from '../redux/store';
 import { useEffect } from 'react';
 import { setUser } from '../redux/user/actions';
 import { GET_ME } from '../graphql/queries';
+import { PopupProvider } from '../contexts/PopupProvider';
 
 const errorLink = onError(({ graphQLErrors }) => {
   if(graphQLErrors) {
@@ -43,11 +44,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return(
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <AuthLayer>
-          <Navbar />
-          <Component {...pageProps} />
-          <Footer />
-        </AuthLayer>
+        <PopupProvider>
+          <AuthLayer>
+            <Navbar />
+            <Component {...pageProps} />
+            <Footer />
+          </AuthLayer>
+        </PopupProvider>
       </ApolloProvider>
     </Provider>
   )
