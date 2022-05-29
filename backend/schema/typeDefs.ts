@@ -8,6 +8,7 @@ const typeDefs = gql`
         getMe: User
 
         getUserHighScore(id: String!, gameId: String!): Score
+        getUserScores(id: String!, gameId: String!): [Score]!
     }
     type Mutation {
         createUser(username: String!, password: String!, name: String): User!

@@ -18,3 +18,8 @@ export type GetUserHighScore = (_:any, args: {
     id: string;
     gameId: string;
 }) => Promise<Score | null>;
+
+export type GetUserScores = (_:any, args: {
+    id: string;
+    gameId: string;
+}) => Promise<Score[]>
