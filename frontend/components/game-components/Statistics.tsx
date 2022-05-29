@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/GameComponents.module.scss';
 import { Leaderboard } from './Leaderboard';
-import { StatsGraph } from './StatsGraph';
 
 export const Statistics: React.FC<{
     gameId: string;
@@ -13,7 +12,10 @@ export const Statistics: React.FC<{
             </h1>
             <div className={styles['stats-content']}>
                 <Leaderboard gameId={gameId} />
-                <StatsGraph />
+
+                {/* Look figma design for this one */}
+                {/* Temporary on ice - needs more data */}
+                {/* <StatsGraph /> */}
             </div>
         </div>
     )
