@@ -9,8 +9,10 @@ export const LOGIN = gql`
 `
 export const GET_ME = gql`
     query getMe {
-        id
-        username
-        name
+        getMe {
+            id
+            username
+            name
+        }
     }
 `

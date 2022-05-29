@@ -9,7 +9,8 @@ export const userReducer: UserReducer = (state=initialState, action) => {
         case SET_USER: {
             return {
                 ...state,
-                user: action.payload
+                user: action.payload,
+                loading: false
             }
             break;
         }

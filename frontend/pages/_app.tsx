@@ -58,11 +58,15 @@ const AuthLayer: React.FC<{children: any}> = ({ children }) => {
   const dispatch = useDispatch<AppDispatch>();
   const [getMe] = useLazyQuery(GET_ME);
 
+  // Fetching and storing logged in user
   useEffect(() => {
-    getMe().then((data: any) => {
+    getMe().then(({ data }) => {
       const user = data.getMe;
-      dispatch(setUser(user));
-      console.log(user);
+
+      // If logged in user found, set user in redux store
+      if(user) {
+        dispatch(setUser(user));
+      }
     })
   }, []);
 
