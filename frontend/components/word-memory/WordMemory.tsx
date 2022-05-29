@@ -1,15 +1,14 @@
 import React from 'react';
-import { MainScreen } from '../game-components/MainScreen';
+import { GameScreen } from '../game-components/GameScreen';
 import { WordMemoryGame } from './WordMemoryGame';
 
 export const WordMemory = () => {
     return(
-        <div>
-            <MainScreen 
-                gameComponent={WordMemoryGame}
-                gameName={'Word Memory'}
-                gameDescription={'Differentiate between previously shown words and new words.'}
-            />
-        </div>
+        <GameScreen 
+            gameComponent={WordMemoryGame}
+            gameName={'Word Memory'}
+            gameId={'word-memory'}
+            gameDescription={'Differentiate between previously shown words and new words.'}
+        />
     )
 }
