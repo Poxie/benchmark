@@ -8,3 +8,11 @@ export const CREATE = gql`
         }
     }
 `
+
+export const CREATE_SCORE = gql`
+    mutation createScore($userId: String!, $gameId: String!, $score: Int!) {
+        createScore(userId: $userId, gameId: $gameId, score: $score) {
+            score
+        }
+    }
+`

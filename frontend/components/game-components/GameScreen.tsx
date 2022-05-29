@@ -14,6 +14,7 @@ export const GameScreen: React.FC<{
             <MainScreen 
                 gameComponent={GameComponent}
                 gameName={gameName}
+                gameId={gameId}
                 gameDescription={gameDescription}
             />
             <Statistics 
