@@ -1,5 +1,5 @@
 import { Users } from "../../../entities/Users"
-import { GetUserByUsername, Login } from "./types";
+import { GetMe, GetUserByUsername, Login } from "./types";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
@@ -36,4 +36,13 @@ export const LOGIN: Login = async (_, { username, password }) => {
     });
 
     return { id: user.id, token, expiresIn };
+}
+export const GET_ME: GetMe = async (_, __, { userId }) => {
+    // Checking if user is logged in
+    if(!userId) throw new Error('User is not logged in.');
+
+    // Fetching user
+    const user = await Users.findOneBy({ id: userId });
+
+    return user;
 }
