@@ -64,7 +64,7 @@ const AuthLayer: React.FC<{children: any}> = ({ children }) => {
   // Fetching and storing logged in user
   useEffect(() => {
     getMe().then(({ data }) => {
-      const user = data.getMe;
+      const user = data?.getMe;
 
       // If logged in user found, set user in redux store
       if(user) {
