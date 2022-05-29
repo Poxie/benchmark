@@ -1,5 +1,6 @@
 import { CREATE_SCORE } from "./mutations/Scores";
 import { CREATE_USER } from "./mutations/User";
+import { GET_USER_HIGH_SCORE } from "./queries/Scores";
 import { GET_ALL_USERS, GET_ME, GET_USER_BY_USERNAME, LOGIN } from "./queries/User";
 
 const resolvers = {
@@ -7,7 +8,8 @@ const resolvers = {
         getUsers: GET_ALL_USERS,
         getUserByUsername: GET_USER_BY_USERNAME,
         login: LOGIN,
-        getMe: GET_ME
+        getMe: GET_ME,
+        getUserHighScore: GET_USER_HIGH_SCORE
     },
     Mutation: {
         createUser: CREATE_USER,

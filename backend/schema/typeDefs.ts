@@ -6,6 +6,8 @@ const typeDefs = gql`
         getUserByUsername(username: String!): User
         login(username: String!, password: String!): AuthData
         getMe: User
+
+        getUserHighScore(id: String!, gameId: String!): Score
     }
     type Mutation {
         createUser(username: String!, password: String!, name: String): User!
