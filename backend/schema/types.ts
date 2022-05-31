@@ -12,6 +12,11 @@ export type Score = {
 export type ScoreExtended = Score & {
     position: number;
 }
+export type Game = {
+    id: string;
+    title: string;
+    description: string;
+}
 export type ProfileOverview = {
     userId: string;
     user?: User;

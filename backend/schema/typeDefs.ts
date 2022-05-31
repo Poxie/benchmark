@@ -29,6 +29,7 @@ const typeDefs = gql`
         user: User!
         gameId: String!
         score: Int!
+        game: Game!
     }
     type HighScore {
         id: String!
@@ -37,6 +38,12 @@ const typeDefs = gql`
         gameId: String!
         score: Int!
         position: Int!
+        game: Game!
+    }
+    type Game {
+        id: String!
+        title: String!
+        description: String!
     }
     type ProfileOverview {
         highScores: [HighScore]!
