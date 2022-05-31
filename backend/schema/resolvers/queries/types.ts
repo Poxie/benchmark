@@ -32,4 +32,5 @@ export type GetGameLeaderboard = (_:any, args: {
 // Profile
 export type GetProfileOverview = (_: any, args: {
     userId: string;
+    username?: string;
 }) => Promise<ProfileOverview | null>;

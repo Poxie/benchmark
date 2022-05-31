@@ -49,7 +49,13 @@ export const GET_ME: GetMe = async (_, __, { userId }) => {
 }
 
 // Profile
-export const GET_PROFILE_OVERVIEW: GetProfileOverview = async (_, { userId }) => {
+export const GET_PROFILE_OVERVIEW: GetProfileOverview = async (_, { userId, username }) => {
+    // If fetch by username
+    if(!userId && username) {
+        userId = (await Users.findOneBy({ username }))?.id as string;
+    }
+
+    // Getting user highscores
     const highScores = await Scores.find({
         where: {
             isHighscore: true,
