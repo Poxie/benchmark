@@ -77,22 +77,27 @@ export const MemorySequenceGame: React.FC<{
     }, [showingPattern]);
 
     return(
-        <div className={styles['grid']}>
-            {grid.map((item, key) => {
-                const isActive = item.active || key === pressedIndex;
+        <div className={styles['container']}>
+            <h1>
+                Score: {score}
+            </h1>
+            <div className={styles['grid']}>
+                {grid.map((item, key) => {
+                    const isActive = item.active || key === pressedIndex;
 
-                const className = [
-                    styles['button'],
-                    isActive ? styles['active'] : ''
-                ].join(' ');
-                return(
-                    <div 
-                        className={className}
-                        onClick={() => handleClick(key)}
-                        key={key}
-                    />
-                )
-            })}
+                    const className = [
+                        styles['button'],
+                        isActive ? styles['active'] : ''
+                    ].join(' ');
+                    return(
+                        <div 
+                            className={className}
+                            onClick={() => handleClick(key)}
+                            key={key}
+                        />
+                    )
+                })}
+            </div>
         </div>
     )
 }
