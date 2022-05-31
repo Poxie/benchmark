@@ -13,4 +13,7 @@ export class Scores extends BaseEntity {
 
     @Column('bigint')
     score!: number;
+
+    @Column('boolean')
+    isHighscore!: boolean;
 }

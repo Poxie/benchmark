@@ -10,6 +10,8 @@ const typeDefs = gql`
         getUserHighScore(id: String!, gameId: String!): Score
         getUserScores(id: String!, gameId: String!): [Score]!
         getGameLeaderboard(gameId: String!): [HighScore]!
+
+        getProfileOverview(userId: String!): ProfileOverview!
     }
     type Mutation {
         createUser(username: String!, password: String!, name: String): User!
@@ -35,6 +37,14 @@ const typeDefs = gql`
         gameId: String!
         score: Int!
         position: Int!
+    }
+    type ProfileOverview {
+        highScores: [HighScore]!
+        totalScore: Int!
+        differentGamesPlayed: Int!
+        duelWins: Int!
+        user: User!
+        userId: String!
     }
 
     type AuthData {

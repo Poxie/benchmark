@@ -1,8 +1,9 @@
 import { Users } from "../../../entities/Users"
-import { GetMe, GetUserByUsername, Login } from "./types";
+import { GetMe, GetProfileOverview, GetUserByUsername, Login } from "./types";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
+import { Scores } from "../../../entities/Scores";
 dotenv.config();
 
 // Comparing passwords
@@ -45,4 +46,32 @@ export const GET_ME: GetMe = async (_, __, { userId }) => {
     const user = await Users.findOneBy({ id: userId });
 
     return user;
+}
+
+// Profile
+export const GET_PROFILE_OVERVIEW: GetProfileOverview = async (_, { userId }) => {
+    const highScores = await Scores.find({
+        where: {
+            isHighscore: true,
+            userId
+        },
+        order: {
+            score: 'DESC'
+        }
+    });
+
+    // Determining overview property values
+    const totalScore = highScores.map(score => typeof score.score === 'string' ? parseInt(score.score) : score.score).reduce((partial, a) => partial + a, 0);
+    const differentGamesPlayed = highScores.length;
+
+    // Hard-coded for now until duels are implemented
+    const duelWins = 0;
+    
+    return {
+        userId,
+        highScores,
+        differentGamesPlayed,
+        duelWins,
+        totalScore,
+    };
 }

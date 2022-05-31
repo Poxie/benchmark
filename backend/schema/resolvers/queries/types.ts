@@ -1,4 +1,4 @@
-import { AuthData, Context, Score, User } from "../../types"
+import { AuthData, Context, ProfileOverview, Score, User } from "../../types"
 
 // User
 export type GetUserByUsername = (_: any, args: {
@@ -27,3 +27,9 @@ export type GetUserScores = (_:any, args: {
 export type GetGameLeaderboard = (_:any, args: {
     gameId: string;
 }) => Promise<Score[]>
+
+
+// Profile
+export type GetProfileOverview = (_: any, args: {
+    userId: string;
+}) => Promise<ProfileOverview | null>;
