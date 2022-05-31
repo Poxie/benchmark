@@ -31,7 +31,7 @@ export const StartScreen: React.FC<{
                 className={styles['button']}
                 onClick={onStart}
             >
-                Let's Start!
+                Let&apos;s Start!
             </Button>
         </div>
     )
