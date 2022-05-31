@@ -92,7 +92,7 @@ export const WordMemoryGame: React.FC<{
         <div className={styles['container']}>
             <div className={styles['stats']}>
                 <div className={styles['lives']}>
-                    {Array.from(Array(lives)).map(() => <HeartIcon />)}
+                    {Array.from(Array(lives)).map((_, key) => <HeartIcon key={key} />)}
                 </div>
                 
                 <span>
