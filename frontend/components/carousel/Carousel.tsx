@@ -103,7 +103,6 @@ export const Carousel: React.FC<{
     useEffect(() => {
         const resize = () => {
             const allItemWidth = items.length * itemWidth.current + gap * items.length;
-            console.log(allItemWidth, window.innerWidth);
             setShouldTransform(!(allItemWidth < window.innerWidth));
         }
         resize();
