@@ -1,0 +1,19 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .7vw;
+    height: 65%;
+    aspect-ratio: 1;
+}
+.button {
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius-primary);
+    cursor: pointer;
+    transition: background-color .2s;
+
+    &.active {
+        background-color: rgba(255,255,255, .7);
+    }
+}
