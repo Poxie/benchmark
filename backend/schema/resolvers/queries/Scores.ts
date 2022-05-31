@@ -50,7 +50,7 @@ export const GET_GAME_LEADERBOARD: GetGameLeaderboard = async (_, { gameId }) =>
                 ...score,
                 
                 // Determining leaderboard position
-                position: i + 1
+                position: filteredScores.length + 1
             });
         }
     }
