@@ -1,10 +1,10 @@
 import React from 'react';
 import { MemorySequenceGame } from './MemorySequenceGame';
-import { MainScreen } from '../game-components/MainScreen';
+import { GameScreen } from '../game-components/GameScreen';
 
 export const MemorySequence = () => {
     return(
-        <MainScreen 
+        <GameScreen 
             gameComponent={MemorySequenceGame}
             gameName={'Memory Sequence'}
             gameId={'memory-sequence'}
