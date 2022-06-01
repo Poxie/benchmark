@@ -6,8 +6,8 @@ type Parent = {
     gameId: string;
 }
 export const ProfileOverview = {
-    user: ({ userId }: Parent) => {
-        const user = Users.findOneBy({ id: userId });
+    user: async ({ userId }: Parent) => {
+        const user = await Users.findOneBy({ id: userId });
         return user;
     }
 }
