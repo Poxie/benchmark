@@ -16,3 +16,24 @@ export const selectProfileIdentity = createSelector(
         }
     }
 )
+export const selectProfileStats = createSelector(
+    [selectProfile],
+    profile => {
+        if(!profile) return null;
+
+        const { totalScore, differentGamesPlayed, duelWins } = profile;
+        return {
+            totalScore,
+            differentGamesPlayed,
+            duelWins
+        }
+    }
+)
+export const selectProfileHighScores = createSelector(
+    [selectProfile],
+    profile => {
+        if(!profile) return null;
+
+        return profile.highScores;
+    }
+)

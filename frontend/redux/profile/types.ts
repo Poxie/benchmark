@@ -7,13 +7,18 @@ export type ProfileState = {
 export type Profile = {
     highScores: HighScore[];
     totalScore: number;
-    duelsWins: number;
+    duelWins: number;
     differentGamesPlayed: number;
     user: User;
 }
 export type HighScore = {
     score: number;
     position: number;
+    game: Game;
+}
+export type Game = {
+    title: string;
+    id: string;
 }
 type ProfileAction = {
     type: 'SET_PROFILE';

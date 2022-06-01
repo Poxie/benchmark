@@ -41,6 +41,7 @@ export const GET_PROFILE_BY_USERNAME = gql`
             highScores {
                 score
                 game {
+                    id
                     title
                 }
             }
