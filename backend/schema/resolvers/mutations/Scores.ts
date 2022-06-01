@@ -21,7 +21,7 @@ export const CREATE_SCORE: CreateScore = async (_, { userId, gameId, score }, { 
         }
     })
     // If is new highscore, update properties
-    if(highestScore && highestScore.score as number > score) {
+    if(highestScore && score > highestScore.score) {
         scoreObj.isHighscore = true;
         highestScore.isHighscore = false;
         highestScore.save();
