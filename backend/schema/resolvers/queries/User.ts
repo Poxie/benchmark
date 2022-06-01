@@ -54,6 +54,7 @@ export const GET_PROFILE_OVERVIEW: GetProfileOverview = async (_, { userId, user
     if(!userId && username) {
         userId = (await Users.findOneBy({ username }))?.id as string;
     }
+    if(!userId) return null;
 
     // Getting user highscores
     const highScores = await Scores.find({
