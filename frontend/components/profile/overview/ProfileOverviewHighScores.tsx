@@ -15,11 +15,11 @@ export const ProfileOverviewHighScores = () => {
                 My Highscores
             </p>
 
-            {highScores.map(highScore => {
+            {highScores.map((highScore, key) => {
                 const { score, game } = highScore;
 
                 return(
-                    <div className={styles['high-score']}>
+                    <div className={styles['high-score']} key={key}>
                         <div className={styles['left']}>
                             <Link href={`/${game.id}`}>
                                 <div>
