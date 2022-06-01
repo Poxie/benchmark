@@ -102,7 +102,7 @@
     }
 }
 .high-score {
-    --padding: calc(var(--spacing-primary) / 1.5);
+    --padding: 12px;
     padding: var(--padding);
     border-radius: var(--border-radius-primary);
     display: flex;
@@ -118,7 +118,7 @@
         height: 40px;
         fill: var(--text-primary);
         transform: rotate(90deg);
-        padding: 10px;
+        padding: 12px;
         background-color: var(--background-tertiary);
         border-radius: 50%;
         margin-right: var(--padding);
