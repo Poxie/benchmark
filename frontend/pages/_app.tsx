@@ -7,10 +7,11 @@ import { onError } from '@apollo/client/link/error';
 import { setContext } from '@apollo/client/link/context';
 import { Provider, useDispatch } from 'react-redux';
 import { AppDispatch, store } from '../redux/store';
-import { useEffect } from 'react';
+import { ReactElement, ReactNode, useEffect } from 'react';
 import { setUser, setUserLoading } from '../redux/user/actions';
 import { GET_ME } from '../graphql/queries';
 import { PopupProvider } from '../contexts/PopupProvider';
+import { NextPage } from 'next';
 
 const errorLink = onError(({ graphQLErrors }) => {
   if(graphQLErrors) {
@@ -40,14 +41,23 @@ export const client = new ApolloClient({
   link: authLink.concat(link)
 })
 
-function MyApp({ Component, pageProps }: AppProps) {
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+  
   return(
     <Provider store={store}>
       <ApolloProvider client={client}>
         <PopupProvider>
           <AuthLayer>
             <Navbar />
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps} />)}
             <Footer />
           </AuthLayer>
         </PopupProvider>
