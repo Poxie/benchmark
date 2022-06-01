@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/Profile.module.scss';
-import { ProfileOverview } from './ProfileOverview';
-import { ProfileSidebar } from './ProfileSidebar';
+import { ProfileOverview } from './overview/ProfileOverview';
+import { ProfileSidebar } from './sidebar/ProfileSidebar';
 
 export const Profile = () => {
     return(

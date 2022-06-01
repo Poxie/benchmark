@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../../styles/Profile.module.scss';
-import { selectProfileStats } from '../../redux/profile/selectors';
-import { useAppSelector } from '../../redux/store';
+import styles from '../../../styles/Profile.module.scss';
+import { selectProfileStats } from '../../../redux/profile/selectors';
+import { useAppSelector } from '../../../redux/store';
 import { ProfileOverviewCard } from './ProfileOverviewCard';
 
 export const ProfileOverviewCards = () => {

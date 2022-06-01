@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { selectProfileIdentity } from '../../redux/profile/selectors';
-import { useAppSelector } from '../../redux/store';
-import styles from '../../styles/Profile.module.scss';
+import { selectProfileIdentity } from '../../../redux/profile/selectors';
+import { useAppSelector } from '../../../redux/store';
+import styles from '../../../styles/Profile.module.scss';
 
 const tabs = [
     { text: 'Overview', path: `` },

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../../styles/Profile.module.scss'
-import { selectProfileHighScores } from '../../redux/profile/selectors';
-import { useAppSelector } from '../../redux/store';
+import styles from '../../../styles/Profile.module.scss'
+import { selectProfileHighScores } from '../../../redux/profile/selectors';
+import { useAppSelector } from '../../../redux/store';
 import Link from 'next/link';
-import { FilledArrowIcon } from '../../icons/FilledArrowIcon';
+import { FilledArrowIcon } from '../../../icons/FilledArrowIcon';
 
 export const ProfileOverviewHighScores = () => {
     const highScores = useAppSelector(selectProfileHighScores);
