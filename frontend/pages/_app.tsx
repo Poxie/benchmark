@@ -35,7 +35,7 @@ const link = from([
   new HttpLink({ uri: process.env.NEXT_PUBLIC_API_ENDPOINT }),
 ])
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: authLink.concat(link)
 })

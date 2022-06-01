@@ -29,3 +29,24 @@ export const GET_GAME_LEADERBOARD = gql`
         }
     }
 `
+
+export const GET_PROFILE_BY_USERNAME = gql`
+    query getProfileOverview($username: String!) {
+        getProfileOverview(username: $username) {
+            user {
+                id
+                username
+                name
+            }
+            highScores {
+                score
+                game {
+                    title
+                }
+            }
+            totalScore
+            differentGamesPlayed
+            duelWins
+        }
+    }
+`

@@ -1,0 +1,6 @@
+.container {
+    --sidebar-width: 22%;
+    background: var(--background-primary);
+    background: linear-gradient(90deg, var(--background-secondary) 0%, var(--background-secondary) var(--sidebar-width), var(--background-primary) var(--sidebar-width), var(--background-primary) 100%);
+    min-height: calc(100vh - var(--navbar-height));
+}

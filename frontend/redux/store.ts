@@ -1,5 +1,6 @@
 import { $CombinedState, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { ProfileState } from "./profile/types";
 import reducer from "./reducer";
 import { UserState } from "./user/types";
 
@@ -12,6 +13,7 @@ export type RootState = {
     readonly [$CombinedState]?: undefined;
 } & {
     user: UserState;
+    profile: ProfileState
 }
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
