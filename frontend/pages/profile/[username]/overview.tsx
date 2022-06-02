@@ -3,27 +3,11 @@ import { client } from '../../_app';
 import { GetServerSidePropsContext } from 'next';
 import { GET_PROFILE_BY_USERNAME } from '../../../graphql/queries';
 import { Profile } from '../../../redux/profile/types';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { setProfile } from '../../../redux/profile/actions';
 import { ProfileLayout } from '../../../layouts/ProfileLayout';
 import { ProfileOverview } from '../../../components/profile/overview/ProfileOverview';
-import { wrapper } from '../../../redux/store';
-
-export default function profile({ profile }: {profile: Profile}) {
-    const dispatch = useDispatch();
-    
-    // On mount, set user profile in redux
-    dispatch(setProfile(profile));
-
-    return <ProfileOverview />;
-}
-profile.getLayout = (page: ReactElement) => {
-    return(
-        <ProfileLayout>
-            {page}
-        </ProfileLayout>
-    )
-}
+import { RootState, wrapper } from '../../../redux/store';
 
 export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
     const { username } = query;
@@ -51,3 +35,16 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async ({ q
         }
     }
 });
+
+const profile = () => {
+    return <ProfileOverview />;
+}
+profile.getLayout = (page: ReactElement) => {
+    return(
+        <ProfileLayout>
+            {page}
+        </ProfileLayout>
+    )
+}
+
+export default connect((state: RootState) => state)(profile);
