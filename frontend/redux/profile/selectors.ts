@@ -37,3 +37,12 @@ export const selectProfileHighScores = createSelector(
         return profile.highScores;
     }
 )
+export const selectAllProfileGameStats = (state: RootState) => state.profile.profile?.gameStats;
+export const selectProfileGameStatId = (state: RootState, statId: string) => statId;
+export const selectProfileGameStats = createSelector(
+    [selectAllProfileGameStats, selectProfileGameStatId],
+    (stats, statId) => {
+        if(!stats || !stats[statId]) return null;
+        return stats[statId];
+    }
+)

@@ -51,3 +51,20 @@ export const GET_PROFILE_BY_USERNAME = gql`
         }
     }
 `
+export const GET_PROFILE_GAME_STATS = gql`
+    query getProfileGameStats($userId: String!, $gameId: String!) {
+        getProfileGameStats(userId: $userId, gameId: $gameId) {
+            gameId
+            gamesPlayed
+            highScore {
+                score
+            }
+            game {
+                title
+            }
+            scores {
+                score
+            }
+        }
+    }
+`
