@@ -46,3 +46,19 @@ export const selectProfileGameStats = createSelector(
         return stats[statId];
     }
 )
+export const selectProfileGameStatsGame = createSelector(
+    [selectProfileGameStats],
+    stats => stats?.game
+)
+export const selectProfileGameStatsMain = createSelector(
+    [selectProfileGameStats],
+    stats => {
+        if(!stats) return null;
+
+        const { highScore, gamesPlayed } = stats;
+        return {
+            highScore,
+            gamesPlayed
+        }
+    }
+)
