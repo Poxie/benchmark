@@ -1,5 +1,5 @@
 import { Users } from "../../../entities/Users"
-import { GetMe, GetProfileOverview, GetUserByUsername, Login } from "./types";
+import { GetMe, GetProfileGameStats, GetProfileOverview, GetUserByUsername, Login } from "./types";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
@@ -81,4 +81,30 @@ export const GET_PROFILE_OVERVIEW: GetProfileOverview = async (_, { userId, user
         duelWins,
         totalScore,
     };
+}
+export const GET_PROFILE_GAME_STATS: GetProfileGameStats = async (_, { gameId, userId }) => {
+    // Fetching scores
+    const scores = await Scores.find({
+        where: {
+            userId,
+            gameId
+        },
+        order: {
+            score: 'DESC'
+        }
+    });
+
+    // Getting highest score
+    const highScore = scores[0];
+
+    // Fetching amount of games played
+    const gamesPlayed = await Scores.countBy({ gameId, userId });
+
+    return {
+        userId,
+        gameId,
+        highScore,
+        scores,
+        gamesPlayed
+    }
 }

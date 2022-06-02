@@ -25,6 +25,15 @@ export type ProfileOverview = {
     differentGamesPlayed: number;
     duelWins: number;
 }
+export type ProfileGameStats = {
+    userId: string;
+    user?: User;
+    gameId: string;
+    game?: Game;
+    highScore: Score;
+    scores: Score[];
+    gamesPlayed: number;
+}
 
 export type AuthData = {
     id: string;
