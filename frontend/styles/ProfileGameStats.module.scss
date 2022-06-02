@@ -1,7 +1,7 @@
 .container {
     width: 100%;
     margin-right: var(--sidebar-content-width);
-    
+
     h1 {
         font-size: 20px;
         margin-top: 0;
@@ -31,4 +31,21 @@
     font-weight: 700;
     text-transform: uppercase;
     color: var(--text-secondary);
+}
+.scores {
+    margin-top: var(--spacing-primary);
+
+    h2 {
+        margin: 0;
+        margin-bottom: calc(var(--spacing-primary) / 2);
+        font-size: 16px;
+        color: var(--text-secondary);
+    }
+}
+.score {
+    padding: calc(var(--spacing-primary) / 2);
+    background-color: var(--background-secondary);
+    border-radius: var(--border-radius-primary);
+    margin-bottom: 5px;
+    font-size: 13px;
 }

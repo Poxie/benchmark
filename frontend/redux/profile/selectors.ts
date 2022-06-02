@@ -62,3 +62,10 @@ export const selectProfileGameStatsMain = createSelector(
         }
     }
 )
+export const selectProfileGameStatsScores = createSelector(
+    [selectProfileGameStats],
+    stats => {
+        if(!stats) return null;
+        return stats.scores;
+    }
+)
