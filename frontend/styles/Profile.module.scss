@@ -42,10 +42,11 @@
     border-bottom: 2px solid var(--background-tertiary);
 }
 .sidebar-tabs {
-    margin-top: var(--spacing-primary);
+    --sidebar-tab-padding: 10px;
+    margin-top: calc(var(--spacing-primary) - var(--sidebar-tab-padding));
 }
 .sidebar-tab {
-    padding: 10px;
+    padding: var(--sidebar-tab-padding);
     border-radius: calc(var(--border-radius-primary) / 2);
     cursor: pointer;
     margin-bottom: 5px;
