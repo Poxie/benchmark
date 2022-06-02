@@ -6,7 +6,7 @@ import { useAppSelector } from '../../../redux/store';
 import styles from '../../../styles/Profile.module.scss';
 
 const tabs = [
-    { text: 'Overview', path: `` },
+    { text: 'Overview', path: `overview` },
     { text: 'Number Memory', path: 'number-memory' },
     { text: 'Word Memory', path: 'word-memory' },
     { text: 'Memory Sequence', path: 'memory-sequence' },
@@ -23,7 +23,7 @@ export const ProfileSidebarTabs = () => {
             {tabs.map(tab => {
                 const { text, path } = tab;
                 const href = `/profile/${username}/${path}`;
-                const active = href === asPath + '/';
+                const active = href === asPath;
 
                 const className = [
                     styles['sidebar-tab'],
@@ -32,7 +32,7 @@ export const ProfileSidebarTabs = () => {
                 return(
                     <Link href={href} key={path}>
                         <div className={className}>
-                            {tab.text}
+                            {text}
                         </div>
                     </Link>
                 )
