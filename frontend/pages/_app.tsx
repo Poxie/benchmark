@@ -5,8 +5,8 @@ import { Footer } from '../components/footer/Footer'
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from, useQuery, useLazyQuery } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { setContext } from '@apollo/client/link/context';
-import { Provider, useDispatch } from 'react-redux';
-import { AppDispatch, store } from '../redux/store';
+import { Provider, useDispatch, useStore } from 'react-redux';
+import { AppDispatch, wrapper } from '../redux/store';
 import { ReactElement, ReactNode, useEffect } from 'react';
 import { setUser, setUserLoading } from '../redux/user/actions';
 import { GET_ME } from '../graphql/queries';
@@ -49,6 +49,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const store = useStore();
   const getLayout = Component.getLayout ?? ((page) => page);
   
   return(
@@ -65,7 +66,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     </Provider>
   )
 }
-export default MyApp;
+export default wrapper.withRedux(MyApp);
 
 const AuthLayer: React.FC<{children: any}> = ({ children }) => {
   const dispatch = useDispatch<AppDispatch>();
