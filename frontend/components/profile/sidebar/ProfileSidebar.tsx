@@ -2,7 +2,7 @@ import React from 'react';
 import { selectProfileIdentity, selectProfileIsLoading } from '../../../redux/profile/selectors';
 import { useAppSelector } from '../../../redux/store';
 import styles from '../../../styles/Profile.module.scss';
-import { ProfileSidebarTabs } from './ProfileSidebarTabs';
+import { ProfileSidebarTabs } from './ProfileSidebarSections';
 
 export const ProfileSidebar = () => {
     const loading = useAppSelector(selectProfileIsLoading);
