@@ -7,9 +7,10 @@ export const CREATE_SCORE: CreateScore = async (_, { userId, gameId, score }, { 
 
     // Creating score row
     const scoreObj = new Scores();
-    scoreObj.score = score;
+    scoreObj.score = score.toString();
     scoreObj.gameId = gameId;
     scoreObj.userId = userId;
+    scoreObj.timestamp = Date.now().toString();
 
     // Checking if score is new highscore
     const highestScore = await Scores.findOne({
@@ -21,7 +22,7 @@ export const CREATE_SCORE: CreateScore = async (_, { userId, gameId, score }, { 
         }
     })
     // If is new highscore, update properties
-    if(highestScore && score > highestScore.score) {
+    if(highestScore && score > parseInt(highestScore.score)) {
         scoreObj.isHighscore = true;
         highestScore.isHighscore = false;
         highestScore.save();

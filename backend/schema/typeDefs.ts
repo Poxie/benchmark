@@ -32,6 +32,7 @@ const typeDefs = gql`
         ranking: Int
         score: Int!
         game: Game!
+        timestamp: String!
     }
     type HighScore {
         id: String!
@@ -61,6 +62,9 @@ const typeDefs = gql`
         highScore: Score!
         scores: [Score]!
         gamesPlayed: Int!
+        lastPlayed: String
+        latestScore: Int
+        averageScore: Float
         user: User!
         game: Game!
     }

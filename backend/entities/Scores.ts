@@ -12,8 +12,11 @@ export class Scores extends BaseEntity {
     gameId!: string;
 
     @Column('bigint')
-    score!: number;
+    score!: string;
 
     @Column('boolean')
     isHighscore!: boolean;
+
+    @Column('bigint')
+    timestamp!: string;
 }
