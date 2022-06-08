@@ -5,6 +5,7 @@ import { selectProfileIdentity } from '../../../redux/profile/selectors';
 import { GameStats } from '../../../redux/profile/types';
 import { useAppSelector } from '../../../redux/store';
 import styles from '../../../styles/Profile.module.scss';
+import { HighScoreStatsFooter } from './HighScoreStatsFooter';
 import { HighScoreStatsHeader } from './HighScoreStatsHeader';
 import { HighScoreStatsNumbers } from './HighScoreStatsNumbers';
 
@@ -33,6 +34,9 @@ export const ProfileOverviewHighScoreStats: React.FC<{
                 ranking={stats.highScore.ranking}
                 averageScore={stats.averageScore}
                 latestScore={stats.latestScore}
+            />
+            <HighScoreStatsFooter 
+                gameId={stats.game.id}
             />
         </div>
     )

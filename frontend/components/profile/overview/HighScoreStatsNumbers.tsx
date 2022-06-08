@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../../../styles/Profile.module.scss';
+import { getNumberSuffix } from '../../../utils/functions';
 import { HighScoreNumber } from './HighScoreNumber';
 
 export const HighScoreStatsNumbers: React.FC<{
@@ -12,7 +13,7 @@ export const HighScoreStatsNumbers: React.FC<{
         <div className={styles['stats-numbers']}>
             <HighScoreNumber 
                 label={'Ranking'}
-                value={`${ranking}`}
+                value={`${ranking}${getNumberSuffix(ranking)}`}
             />
             <HighScoreNumber 
                 label={'Personal Best'}

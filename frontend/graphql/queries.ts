@@ -64,6 +64,7 @@ export const GET_PROFILE_GAME_STATS = gql`
                 ranking
             }
             game {
+                id
                 title
             }
             scores {
