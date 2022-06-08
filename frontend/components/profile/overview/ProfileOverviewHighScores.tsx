@@ -13,7 +13,7 @@ export const ProfileOverviewHighScores = () => {
     return(
         <div className={styles['overview-high-scores']}>
             <p>
-                My Highscores
+                Highscores
             </p>
 
             {highScores.map((highScore, key) => <ProfileOverviewHighScore {...highScore} key={key} />)}

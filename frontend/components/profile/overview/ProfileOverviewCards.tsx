@@ -9,23 +9,23 @@ export const ProfileOverviewCards = () => {
     if(!stats) return null;
 
     const gameFeedback = stats.differentGamesPlayed < 2 ? (
-        'You do not have a very varied taste'
+        'They do not have a very varied taste'
     ) : (
-        'You have a pretty varied taste.'
+        'They have a pretty varied taste'
     );
     return(
         <div className={styles['overview-cards']}>
             <ProfileOverviewCard 
                 title={`${stats.totalScore} score`}
-                description={'This score is a combination of the highscores you have received on all games.'}
+                description={'This is the combined highscores of this user.'}
             />
             <ProfileOverviewCard 
                 title={`${stats.differentGamesPlayed} games`}
-                description={`You have played ${stats.differentGamesPlayed} different games. ${gameFeedback}`}
+                description={`This user has played ${stats.differentGamesPlayed} different games. ${gameFeedback}.`}
             />
             <ProfileOverviewCard 
                 title={`${stats.duelWins} wins`}
-                description={'This is the amount of times you have won duels with friends.'}
+                description={'This is the amount of times this user has won duels.'}
             />
         </div>
     )
