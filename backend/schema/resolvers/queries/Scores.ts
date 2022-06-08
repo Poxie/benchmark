@@ -40,18 +40,14 @@ export const GET_GAME_LEADERBOARD: GetGameLeaderboard = async (_, { gameId }) =>
         take: 50
     });
 
-    const filteredScores: ScoreExtended[] = [];
+    // Making sure there aren't duplicate users on leaderboard
+    const filteredScores: Score[] = [];
     for(let i = 0; i < scores.length; i++) {
         const score = scores[i];
 
-        // Making sure duplicate users aren't on the leaderboard
+        // Checking previous scores
         if(!filteredScores.find(s => s.userId === score.userId)) {
-            filteredScores.push({
-                ...score,
-                
-                // Determining leaderboard position
-                position: filteredScores.length + 1
-            });
+            filteredScores.push(score);
         }
     }
 

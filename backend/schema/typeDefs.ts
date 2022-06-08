@@ -29,6 +29,7 @@ const typeDefs = gql`
         userId: String!
         user: User!
         gameId: String!
+        ranking: Int
         score: Int!
         game: Game!
     }
@@ -38,7 +39,7 @@ const typeDefs = gql`
         user: User!
         gameId: String!
         score: Int!
-        position: Int!
+        ranking: Int
         game: Game!
     }
     type Game {
