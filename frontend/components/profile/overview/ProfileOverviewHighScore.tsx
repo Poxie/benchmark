@@ -16,10 +16,7 @@ export const ProfileOverviewHighScore: React.FC<HighScore> = ({ game, ranking, s
         active ? styles['active'] : ''
     ].join(' ');
     return(
-        <div 
-            className={className} 
-            onClick={toggleActive}
-        >
+        <div className={className}>
             <ProfileOverviewHighScoreHeader 
                 game={game}
                 score={score}
