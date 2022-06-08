@@ -17,7 +17,7 @@ export type Profile = {
 }
 export type HighScore = {
     score: number;
-    position: number;
+    ranking: number;
     game: Game;
 }
 export type Game = {

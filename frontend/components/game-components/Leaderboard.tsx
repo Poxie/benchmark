@@ -8,7 +8,7 @@ import { LeaderboardItem } from './LeaderboardItem';
 export type Score = {
     user: User;
     score: number;
-    position: number;
+    ranking: number;
 }
 export const Leaderboard: React.FC<{
     gameId: string;
@@ -26,7 +26,7 @@ export const Leaderboard: React.FC<{
     return(
         <div className={styles['leaderboard']}>
             {scores.map(score => {
-                return <LeaderboardItem {...score} key={score.position} />
+                return <LeaderboardItem {...score} key={score.ranking} />
             })}
             
             {!scores.length && (

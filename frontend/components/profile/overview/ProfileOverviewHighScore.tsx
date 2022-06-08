@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ProfileOverviewHighScoreStats } from './ProfileOverviewHighScoreStats';
 import { ProfileOverviewHighScoreHeader } from './ProfileOverviewHighScoreHeader';
 
-export const ProfileOverviewHighScore: React.FC<HighScore> = ({ game, position, score }) => {
+export const ProfileOverviewHighScore: React.FC<HighScore> = ({ game, ranking, score }) => {
     const [active, setActive] = useState(false);
 
     // Methods
