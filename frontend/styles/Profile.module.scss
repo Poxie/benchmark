@@ -121,8 +121,10 @@
     margin: 0 calc(-1 * var(--padding));
     border-radius: var(--border-radius-primary);
     position: relative;
-    transition: background-color .1s, min-height .6s, box-shadow .3s, margin .6s, transform .6s;
+    transition: background-color .1s, min-height .6s, max-height .6s, box-shadow .3s, margin .6s, transform .6s;
     min-height: 64px;
+    max-height: 64px;
+    overflow: hidden;;
 
     .left {
         display: flex;
@@ -155,6 +157,7 @@
 
     &.active {
         min-height: 200px;
+        max-height: 200px;
         box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
         margin-bottom: var(--spacing-primary);
         margin-top: var(--spacing-primary);
@@ -196,4 +199,10 @@
 }
 .high-score-stats {
     border-top: 1px solid var(--background-tertiary);
+}
+.stats-header {
+    padding: var(--padding);
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--background-tertiary);
 }

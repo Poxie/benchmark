@@ -56,6 +56,9 @@ export const GET_PROFILE_GAME_STATS = gql`
         getProfileGameStats(userId: $userId, gameId: $gameId) {
             gameId
             gamesPlayed
+            latestScore
+            averageScore
+            lastPlayed
             highScore {
                 score
             }
