@@ -20,23 +20,28 @@ export const ProfileOverviewHighScoreStats: React.FC<{
             userId
         }
     });
-    
     if(loading || !data) return null;
     
+    // Deciphering fetched data
     const stats: GameStats = data.getProfileGameStats;
+    const { highScore, averageScore, latestScore, lastPlayed, game } = stats;
+
+    // If user has played game, these will not be null
+    if(!highScore || !averageScore || !latestScore || !lastPlayed) return null;
+    
     return(
         <div className={styles['high-score-stats']}>
             <HighScoreStatsHeader 
-                lastPlayed={stats.lastPlayed}
+                lastPlayed={lastPlayed}
             />
             <HighScoreStatsNumbers 
-                highScore={stats.highScore.score}
-                ranking={stats.highScore.ranking}
-                averageScore={stats.averageScore}
-                latestScore={stats.latestScore}
+                highScore={highScore.score}
+                ranking={highScore.ranking}
+                averageScore={averageScore}
+                latestScore={latestScore}
             />
             <HighScoreStatsFooter 
-                gameId={stats.game.id}
+                gameId={game.id}
             />
         </div>
     )

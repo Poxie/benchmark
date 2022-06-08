@@ -26,12 +26,12 @@ export type Game = {
 }
 export type GameStats = {
     game: Game;
-    gamesPlayed: number;
     scores: Score[];
-    highScore: Score;
-    lastPlayed: string;
-    averageScore: string;
-    latestScore: string;
+    gamesPlayed?: number;
+    highScore?: Score;
+    lastPlayed?: string;
+    averageScore?: string;
+    latestScore?: string;
 }
 type ProfileAction = {
     type: 'SET_PROFILE' | 'SET_PROFILE_GAME_STATS';

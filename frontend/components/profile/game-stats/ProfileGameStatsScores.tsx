@@ -21,6 +21,12 @@ export const ProfileGameStatsScores: React.FC<{
                     </div>
                 )
             })}
+
+            {!scores.length && (
+                <span className={styles['empty']}>
+                    All your scores will be shown here.
+                </span>
+            )}
         </div>
     )
 }

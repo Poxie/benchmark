@@ -55,10 +55,11 @@ export const selectProfileGameStatsMain = createSelector(
     stats => {
         if(!stats) return null;
 
-        const { highScore, gamesPlayed } = stats;
+        const { highScore, gamesPlayed, averageScore } = stats;
         return {
             highScore,
-            gamesPlayed
+            gamesPlayed,
+            averageScore
         }
     }
 )

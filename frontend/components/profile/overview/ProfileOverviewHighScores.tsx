@@ -17,6 +17,12 @@ export const ProfileOverviewHighScores = () => {
             </p>
 
             {highScores.map((highScore, key) => <ProfileOverviewHighScore {...highScore} key={key} />)}
+
+            {!highScores.length && (
+                <span className={styles['empty']}>
+                    You haven&#39;t played any games yet.
+                </span>
+            )}
         </div>
     )
 }

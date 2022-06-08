@@ -10,20 +10,20 @@ export const ProfileGameStatsCards: React.FC<{
     const cardInfo = useAppSelector(state => selectProfileGameStatsMain(state, gameId));
     if(!cardInfo) return null;
 
-    const { gamesPlayed, highScore } = cardInfo;
+    const { gamesPlayed, highScore, averageScore } = cardInfo;
     return(
         <div className={styles['cards']}>
             <ProfileGameStatsCard 
                 label={'Highest Score'}
-                text={`${highScore.score} points`}
+                text={`${highScore?.score || 0} points`}
+            />
+            <ProfileGameStatsCard 
+                label={'Average Ssore'}
+                text={`${averageScore || 0} points`}
             />
             <ProfileGameStatsCard 
                 label={'Games Played'}
                 text={`${gamesPlayed} games`}
-            />
-            <ProfileGameStatsCard 
-                label={'Average Ssore'}
-                text={'Coming soon'}
             />
         </div>
     )
