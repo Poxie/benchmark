@@ -7,7 +7,7 @@ import { LeaderboardItem } from './LeaderboardItem';
 
 export type Score = {
     user: User;
-    score: number;
+    score: string;
     ranking: number;
 }
 export const Leaderboard: React.FC<{

@@ -6,6 +6,7 @@ import { GameStats } from '../../../redux/profile/types';
 import { useAppSelector } from '../../../redux/store';
 import styles from '../../../styles/Profile.module.scss';
 import { HighScoreStatsHeader } from './HighScoreStatsHeader';
+import { HighScoreStatsNumbers } from './HighScoreStatsNumbers';
 
 export const ProfileOverviewHighScoreStats: React.FC<{
     gameId: string;
@@ -26,6 +27,12 @@ export const ProfileOverviewHighScoreStats: React.FC<{
         <div className={styles['high-score-stats']}>
             <HighScoreStatsHeader 
                 lastPlayed={stats.lastPlayed}
+            />
+            <HighScoreStatsNumbers 
+                highScore={stats.highScore.score}
+                ranking={stats.highScore.ranking}
+                averageScore={stats.averageScore}
+                latestScore={stats.latestScore}
             />
         </div>
     )

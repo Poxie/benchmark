@@ -156,8 +156,8 @@
     }
 
     &.active {
-        min-height: 200px;
-        max-height: 200px;
+        min-height: 205px;
+        max-height: 205px;
         box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
         margin-bottom: var(--spacing-primary);
         margin-top: var(--spacing-primary);
@@ -198,11 +198,27 @@
     color: var(--text-secondary);
 }
 .high-score-stats {
+    --padding: 20px;
     border-top: 1px solid var(--background-tertiary);
 }
 .stats-header {
-    padding: var(--padding);
+    padding: calc(var(--padding) / 2) var(--padding);
     font-size: 13px;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--background-tertiary);
+}
+.stats-numbers {
+    display: flex;
+    gap: 40px;
+    padding: var(--padding);
+
+    span {
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+    h2 {
+        font-size: 24px;
+        margin: 0;
+        margin-top: 10px;
+    }
 }

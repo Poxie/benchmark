@@ -61,6 +61,7 @@ export const GET_PROFILE_GAME_STATS = gql`
             lastPlayed
             highScore {
                 score
+                ranking
             }
             game {
                 title
