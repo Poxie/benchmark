@@ -109,36 +109,91 @@
         color: var(--text-secondary);
     }
 }
-.high-score {
-    --padding: 12px;
-    padding: var(--padding);
-    border-radius: var(--border-radius-primary);
+.high-score-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: var(--padding);
+    cursor: pointer;
+}
+.high-score {
+    --padding: 12px;
+    margin: 0 calc(-1 * var(--padding));
+    border-radius: var(--border-radius-primary);
+    position: relative;
+    transition: background-color .1s, min-height .6s, box-shadow .3s, margin .6s, transform .6s;
+    min-height: 64px;
 
     .left {
         display: flex;
         align-items: center;
+        
+        svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--text-primary);
+            transform: rotate(90deg);
+            background-color: var(--background-tertiary);
+            border-radius: 50%;
+            margin-right: var(--padding);
+            cursor: pointer;
+            display: block;
+        }
     }
-    svg {
-        width: 40px;
-        height: 40px;
-        fill: var(--text-primary);
-        transform: rotate(90deg);
-        padding: 12px;
-        background-color: var(--background-tertiary);
-        border-radius: 50%;
-        margin-right: var(--padding);
-        cursor: pointer;
-        display: block;
+    .right {
+        display: flex;
+        align-items: center;
+
+        svg {
+            width: 30px;
+            height: 30px;
+            transform: rotate(180deg);
+            fill: var(--text-secondary);
+            margin-left: var(--padding);
+        }
     }
 
-    &:nth-child(2n) {
+    &.active {
+        min-height: 200px;
+        box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+        margin-bottom: var(--spacing-primary);
+        margin-top: var(--spacing-primary);
+        transform: scale(1.01);
+
+        .right {
+            svg {
+                transform: rotate(0);
+            }
+        }
+    }
+    &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        height: 2px;
+        width: 100%;
         background-color: var(--background-secondary);
+    }
+    &:hover {
+        .high-score-header {
+            background-color: var(--background-secondary);
+        }
+
+        &::after {
+            background-color: transparent;
+        }
+    }
+    &:hover, &.active {
+        &::after {
+            background-color: transparent;
+        }
     }
 }
 .high-score-points {
     font-size: 14px;
     color: var(--text-secondary);
+}
+.high-score-stats {
+    border-top: 1px solid var(--background-tertiary);
 }

@@ -4,6 +4,7 @@ import { selectProfileHighScores } from '../../../redux/profile/selectors';
 import { useAppSelector } from '../../../redux/store';
 import Link from 'next/link';
 import { FilledArrowIcon } from '../../../icons/FilledArrowIcon';
+import { ProfileOverviewHighScore } from './ProfileOverviewHighScore';
 
 export const ProfileOverviewHighScores = () => {
     const highScores = useAppSelector(selectProfileHighScores);
@@ -15,27 +16,7 @@ export const ProfileOverviewHighScores = () => {
                 My Highscores
             </p>
 
-            {highScores.map((highScore, key) => {
-                const { score, game } = highScore;
-
-                return(
-                    <div className={styles['high-score']} key={key}>
-                        <div className={styles['left']}>
-                            <Link href={`/${game.id}`}>
-                                <div>
-                                    <FilledArrowIcon />
-                                </div>
-                            </Link>
-                            <span>
-                                {game.title}
-                            </span>
-                        </div>
-                        <span className={styles['high-score-points']}>
-                            {score} points
-                        </span>
-                    </div>
-                )
-            })}
+            {highScores.map((highScore, key) => <ProfileOverviewHighScore {...highScore} key={key} />)}
         </div>
     )
 }
