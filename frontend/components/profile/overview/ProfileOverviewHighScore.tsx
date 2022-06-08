@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import styles from '../../../styles/Profile.module.scss';
 import { HighScore } from '../../../redux/profile/types';
-import { FilledArrowIcon } from '../../../icons/FilledArrowIcon';
-import Link from 'next/link';
 import { ProfileOverviewHighScoreStats } from './ProfileOverviewHighScoreStats';
 import { ProfileOverviewHighScoreHeader } from './ProfileOverviewHighScoreHeader';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const ProfileOverviewHighScore: React.FC<HighScore> = ({ game, ranking, score }) => {
     const [active, setActive] = useState(false);
@@ -27,9 +26,18 @@ export const ProfileOverviewHighScore: React.FC<HighScore> = ({ game, ranking, s
                 onClick={toggleActive}
             />
 
-            {active && (
-                <ProfileOverviewHighScoreStats gameId={game.id} />
-            )}
+            <AnimatePresence>
+                {active && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: .98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: .98 }}
+                        transition={{ duration: .3 }}
+                    >
+                        <ProfileOverviewHighScoreStats gameId={game.id} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     )
 }
