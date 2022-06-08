@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../../styles/ProfileGameStats.module.scss';
 import { selectProfileGameStatsScores } from '../../../redux/profile/selectors';
 import { useAppSelector } from '../../../redux/store';
+import { ProfileGameStatsScore } from './ProfileGameStatsScore';
 
 export const ProfileGameStatsScores: React.FC<{
     gameId: string;
@@ -14,13 +15,7 @@ export const ProfileGameStatsScores: React.FC<{
             <h2>
                 All Scores
             </h2>
-            {scores.map((score, key) => {
-                return(
-                    <div className={styles['score']} key={key}>
-                        {score.score} points
-                    </div>
-                )
-            })}
+            {scores.map((score, key) => <ProfileGameStatsScore {...score} key={key} />)}
 
             {!scores.length && (
                 <span className={styles['empty']}>

@@ -9,6 +9,7 @@ export type Score = {
     user: User;
     score: string;
     ranking: number;
+    timestamp: string;
 }
 export const Leaderboard: React.FC<{
     gameId: string;
