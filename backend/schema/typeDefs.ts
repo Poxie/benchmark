@@ -59,9 +59,9 @@ const typeDefs = gql`
     type ProfileGameStats {
         userId: String!
         gameId: String!
-        highScore: Score!
+        highScore: Score
         scores: [Score]!
-        gamesPlayed: Int!
+        gamesPlayed: Int
         lastPlayed: String
         latestScore: Int
         averageScore: Float

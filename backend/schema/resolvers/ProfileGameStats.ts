@@ -31,6 +31,8 @@ export const ProfileGameStats = {
     },
     averageScore: async ({ gameId, userId }: Parent) => {
         const scores = await Scores.findBy({ gameId, userId });
+        if(!scores.length) return null;
+
         const totalScore = scores.map(s => parseInt(s.score)).reduce((a,b) => a + b, 0);
         const average = (totalScore / scores.length).toFixed(1);
         return average;
