@@ -23,12 +23,27 @@ const months = [
     'Jul', 'Aug', 'Sep', 
     'Oct', 'Nov', 'Dec'
 ]
-export const getReadableTime = (timestamp: string) => {
+export const getReadableTime = (timestamp: string, exact?: boolean) => {
     const time = new Date(parseInt(timestamp));
     const year = time.getFullYear();
     const month = time.getMonth();
     const date = time.getDate();
     const dateSuffix = getNumberSuffix(date);
 
-    return `${months[month]} ${date}${dateSuffix}, ${year}`;
+    // Creating and returning date string if not exact
+    let dateString = `${months[month]} ${date}${dateSuffix}, ${year}`
+    if(!exact) return dateString;
+
+    // Else add clock time to dateString
+    let hours = time.getHours();
+    let minutes: string | number = time.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    // AM/PM Calculations
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+
+    dateString += `, ${hours}:${minutes} ${ampm}`;
+    return dateString;
 }
