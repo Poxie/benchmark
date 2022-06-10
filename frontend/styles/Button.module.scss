@@ -4,7 +4,8 @@
     padding: 12px 18px;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color .3s;
+    border: 2px solid transparent;
+    transition: background-color .3s, border-color .3s, opacity .3s, color .3s;
     text-align: center;
     font-weight: 600;
 
@@ -19,5 +20,13 @@
         &:hover {
             background-color: var(--background-tertiary);
         }
+    }
+    &.disabled {
+        background-color: transparent;
+        color: var(--text-primary);
+        border: 2px solid var(--background-tertiary);
+        opacity: .5;
+        cursor: default;
+        user-select: none;
     }
 }

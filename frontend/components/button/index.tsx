@@ -6,16 +6,18 @@ export const Button: React.FC<{
     onClick?: () => void;
     type?: 'primary' | 'light';
     className?: string;
-}> = ({ onClick, children, type='primary', className }) => {
+    disabled?: boolean;
+}> = ({ onClick, children, type='primary', className, disabled }) => {
     className = [
         styles['container'],
         styles[type],
-        className
+        className,
+        disabled ? styles['disabled'] : ''
     ].join(' ');
     return(
         <div 
             className={className}
-            onClick={onClick}
+            onClick={!disabled ? onClick : undefined}
         >
             {children}
         </div>
