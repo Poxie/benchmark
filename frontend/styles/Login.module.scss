@@ -2,6 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: calc(100vh - var(--navbar-height));
+    margin-bottom: var(--navbar-height);
+    margin-top: calc(-1 * var(--navbar-height));
+    padding-top: var(--navbar-height);
 }
 .content {
     width: 500px;
