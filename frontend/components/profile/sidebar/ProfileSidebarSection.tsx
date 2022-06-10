@@ -8,7 +8,7 @@ export const ProfileSidebarSection: React.FC<{
 }> = ({ tabs }) => {
     return(
         <div className={styles['sidebar-section']}>
-            {tabs.map(tab => <ProfileSidebarTab {...tab} key={tab.path} />)}
+            {tabs.map(tab => <ProfileSidebarTab {...tab} key={tab.text} />)}
         </div>
     )
 }
