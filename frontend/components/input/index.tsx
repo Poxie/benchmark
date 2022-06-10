@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { HTMLInputTypeAttribute, useEffect, useRef, useState } from 'react';
 import styles from '../../styles/Input.module.scss';
 
 export const Input: React.FC<{
@@ -11,7 +11,8 @@ export const Input: React.FC<{
     value?: string;
     name?: string;
     label?: string;
-}> = ({ focusOnMount, placeholder, containerClassName, inputClassName, onChange, onSubmit, name, label, value: _value }) => {
+    type?: HTMLInputTypeAttribute
+}> = ({ focusOnMount, placeholder, containerClassName, inputClassName, onChange, onSubmit, name, label, type='text', value: _value }) => {
     const [value, setValue] = useState(_value || '');
     const ref = useRef<HTMLInputElement>(null);
 
@@ -49,7 +50,7 @@ export const Input: React.FC<{
                 </label>
             )}
             <input 
-                type="text"
+                type={type}
                 placeholder={placeholder}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
