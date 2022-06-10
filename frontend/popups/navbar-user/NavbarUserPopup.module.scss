@@ -1,13 +1,13 @@
 .item {
-    padding: 8px 12px;
-    min-width: 120px;
+    padding: 10px 12px;
+    min-width: 140px;
     white-space: nowrap;
     border-radius: calc(var(--border-radius-primary) / 2);
     cursor: pointer;
     font-size: 14px;
 
     &:hover {
-        background-color: var(--background-secondary);
+        background-color: var(--background-tertiary);
     }
     &.danger {
         color: var(--color-red);
