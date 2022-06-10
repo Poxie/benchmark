@@ -1,4 +1,6 @@
 import React from 'react';
+import { selectProfileIsMe } from '../../../redux/profile/selectors';
+import { useAppSelector } from '../../../redux/store';
 import styles from '../../../styles/Profile.module.scss';
 import { ProfileSidebarSection } from './ProfileSidebarSection';
 
@@ -20,11 +22,11 @@ const accountTabs = [
     { text: 'Manage Account', path: 'account' },
     { text: 'Log out', path: 'log-out', type: 'danger' }
 ]
-const sections = [
-    tabs,
-    accountTabs
-]
 export const ProfileSidebarTabs = () => {
+    const isMe = useAppSelector(selectProfileIsMe);
+
+    const sections = [tabs];
+    if(isMe) sections.push(accountTabs);
     return(
         <div className={styles['sidebar-sections']}>
             {sections.map((section, key) => {
