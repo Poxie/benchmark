@@ -14,7 +14,7 @@ export const ProfileOverview = () => {
         <>
         <Head>
             <title>
-                {identity?.username}
+                {identity?.username} - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
         </Head>
 

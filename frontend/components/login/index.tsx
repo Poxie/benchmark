@@ -1,4 +1,5 @@
 import { useLazyQuery, useMutation } from '@apollo/client';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { CREATE } from '../../graphql/mutations';
@@ -86,6 +87,13 @@ export const LoginPage = () => {
         'Already have an account?'
     )
     return(
+        <>
+        <Head>
+            <title>
+                Login - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
+            </title>
+        </Head>
+
         <div className={styles['container']}>
             <div className={styles['content']}>
                 <h1>
@@ -116,5 +124,6 @@ export const LoginPage = () => {
                 </span>
             </div>
         </div>
+        </>
     )
 }

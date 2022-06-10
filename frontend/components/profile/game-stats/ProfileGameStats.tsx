@@ -16,7 +16,7 @@ export const ProfileGameStats: React.FC<{gameId: string}> = ({ gameId }) => {
         <>
         <Head>
             <title>
-                {info?.username} - {game.title}
+                {info?.username} - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
         </Head>
 

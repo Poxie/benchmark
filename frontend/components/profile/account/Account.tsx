@@ -15,7 +15,7 @@ export const Account = () => {
         <>
         <Head>
             <title>
-                {info.username} - Account
+                Account - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
         </Head>
         <div className={styles['container']}>
