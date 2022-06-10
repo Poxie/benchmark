@@ -56,3 +56,12 @@
         margin-bottom: 20px;
     }
 }
+
+@media (max-width: 600px) {
+    .card {
+        flex-direction: column;
+    }
+    .card-header {
+        width: 100%;
+    }
+}
