@@ -17,7 +17,7 @@ export const NavbarOptions = () => {
         userInfo ? (
             <NavbarUser user={userInfo} />
         ) : (
-            <Button onClick={() => router.push(`/login`)}>
+            <Button onClick={() => router.push(`/login?redirect_uri=${encodeURIComponent(router.asPath)}`)}>
                 Sign in
             </Button>
         )
