@@ -70,3 +70,4 @@ export const selectProfileGameStatsScores = createSelector(
         return stats.scores;
     }
 )
+export const selectProfileIsMe = (state: RootState) => state.profile.profile?.user?.id === state.user.user?.id;
