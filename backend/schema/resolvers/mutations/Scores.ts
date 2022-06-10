@@ -15,7 +15,8 @@ export const CREATE_SCORE: CreateScore = async (_, { userId, gameId, score }, { 
     // Checking if score is new highscore
     const highestScore = await Scores.findOne({
         where: {
-            gameId
+            gameId,
+            userId
         },
         order: {
             score: 'DESC'
