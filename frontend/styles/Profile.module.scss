@@ -1,8 +1,8 @@
 .container {
     --sidebar-width: 27%;
     --sidebar-content-width: 200px;
-    background: var(--background-primary);
-    background: linear-gradient(90deg, var(--background-secondary) 0%, var(--background-secondary) var(--sidebar-width), var(--background-primary) var(--sidebar-width), var(--background-primary) 100%);
+    --sidebar-mobile-height: 66px;
+    
     min-height: calc(100vh - var(--navbar-height));
     display: flex;
     
@@ -12,6 +12,7 @@
 }
 .sidebar {
     min-width: var(--sidebar-width);
+    background-color: var(--background-secondary);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -23,6 +24,7 @@
 .sidebar-top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .avatar {
         width: 45px;
@@ -39,6 +41,11 @@
     .username {
         font-size: 20px;
         font-weight: 600;
+    }
+    svg {
+        width: 35px;
+        fill: var(--text-primary);
+        transform: rotate(180deg);
     }
 }
 .sidebar-sections {
@@ -79,9 +86,69 @@
         }
     }
 }
+@media (max-width: 1250px) {
+    .overview-container {
+        max-width: calc(100% - var(--sidebar-width)) !important;
+    }
+}
+@media (max-width: 950px) {
+    .container>div {
+        padding: 15px !important;
+    }
+}
+@media (max-width: 816px) {
+    .container {
+        flex-direction: column;
+
+        &>div {
+            padding: var(--spacing-primary) !important;
+        }
+    }
+    .overview-container {
+        max-width: unset !important;
+        padding: var(--spacing-primary) !important;
+        margin-top: var(--sidebar-mobile-height);
+    }
+    div.sidebar {
+        align-items: unset;
+        position: absolute;
+        z-index: 13;
+        padding: calc(var(--spacing-primary) / 2) var(--spacing-primary) !important;
+        width: 100%;
+        top: var(--navbar-height);
+        height: var(--sidebar-mobile-height);
+        overflow: hidden;
+        border-bottom: 2px solid var(--background-tertiary);
+        transition: height .5s;
+
+        &.active {
+            height: calc(100vh - var(--navbar-height));
+
+            .sidebar-top {
+                svg {
+                    transform: rotate(0);
+                }
+            }
+        }
+    }
+    .sidebar-content {
+        width: 100%;
+    }
+    .sidebar-top {
+        cursor: pointer;
+    }
+}
+@media (max-width: 650px) {
+    .overview-cards {
+        flex-direction: column;
+    }
+    .overview-card {
+        width: 100%;
+    }
+}
 
 .overview-container {
-    margin-right: var(--sidebar-content-width);
+    max-width: calc(100% - var(--sidebar-width) - var(--sidebar-content-width));
 }
 .overview-cards {
     display: flex;
