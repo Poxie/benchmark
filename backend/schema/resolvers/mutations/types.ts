@@ -7,7 +7,7 @@ export type UpdateUser = (_: any, args: {
         currentPassword?: string;
         newPassword?: string;
     }
-}) => Promise<User>;
+}, context: Context) => Promise<User>;
 
 export type CreateScore = (_:any, args: {
     score: number;

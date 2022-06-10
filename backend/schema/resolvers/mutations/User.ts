@@ -22,8 +22,11 @@ export const CREATE_USER = async (_: any, { username, password, name }: any) => 
     return user.save();
 }
 
-export const UPDATE_USER: UpdateUser = async (_: any, { input }) => {
+export const UPDATE_USER: UpdateUser = async (_: any, { input }, { userId }) => {
     const { id, currentPassword, newPassword } = input;
+
+    // Checking if logged in user is same as user being updated
+    if(id !== userId) throw new Error('Unauthorized.');
 
     const user = await Users.findOneBy({ id });
     if(!user) throw new Error('User does not exist.');
