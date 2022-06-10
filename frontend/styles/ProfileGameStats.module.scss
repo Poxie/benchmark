@@ -1,6 +1,5 @@
 .container {
     width: 100%;
-    max-width: calc(100% - var(--sidebar-width) - var(--sidebar-content-width));
 
     h1 {
         font-size: 20px;
@@ -57,11 +56,6 @@
 }
 .score-timestamp {
     color: var(--text-secondary);
-}
-@media (max-width: 1250px) {
-    .container {
-        max-width: calc(100% - var(--sidebar-width)) !important;
-    }
 }
 @media (max-width: 816px) {
     .container {

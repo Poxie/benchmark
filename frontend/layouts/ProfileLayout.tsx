@@ -6,7 +6,9 @@ export const ProfileLayout: React.FC<{children: any}> = ({ children }) => {
     return(
         <div className={styles['container']}>
             <ProfileSidebar />
-            {children}
+            <div className={styles['main']}>
+                {children}
+            </div>
         </div>
     )
 }
