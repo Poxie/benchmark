@@ -11,6 +11,9 @@ const combinedReducers = combineReducers({
 export default (state: any, action: any) => {
     // Making sure server and client are synced
     if(action.type === HYDRATE) {
+        // We don't want to update user on hydration
+        delete action.payload.user;
+
         const nextState = {
             ...state,
             ...action.payload
