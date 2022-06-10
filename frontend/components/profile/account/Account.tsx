@@ -4,6 +4,7 @@ import { useAppSelector } from '../../../redux/store';
 import { selectUserInfo } from '../../../redux/user/selectors';
 import { Input } from '../../input';
 import { AccountDetails } from './AccountDetails';
+import Head from 'next/head';
 
 export const Account = () => {
     const info = useAppSelector(selectUserInfo);
@@ -11,8 +12,15 @@ export const Account = () => {
 
     const { username } = info;
     return(
+        <>
+        <Head>
+            <title>
+                {info.username} - Account
+            </title>
+        </Head>
         <div className={styles['container']}>
             <AccountDetails />
         </div>
+        </>
     )
 }

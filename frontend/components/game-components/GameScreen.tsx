@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import { FunctionComponent } from 'react';
 import { MainScreen } from './MainScreen';
@@ -11,6 +12,13 @@ export const GameScreen: React.FC<{
 }> = ({ gameComponent: GameComponent, gameName, gameId, gameDescription }) => {
     return(
         <>
+            <Head>
+                <title>
+                    {gameName} | {process.env.NEXT_PUBLIC_WEBSITE_NAME}
+                </title>
+                <meta name="description" content={gameDescription} />
+            </Head>
+
             <MainScreen 
                 gameComponent={GameComponent}
                 gameName={gameName}
