@@ -3,8 +3,8 @@ import { usePopup } from '../../contexts/PopupProvider';
 import styles from './NavbarUserPopup.module.scss';
 
 export const NavbarUserPopupItem: React.FC<{
-    text: string;
-    onClick: () => void;
+    text?: string;
+    onClick?: () => void;
     type?: string;
 }> = ({ text, onClick, type='default' }) => {
     const { closePopups } = usePopup();
@@ -15,6 +15,7 @@ export const NavbarUserPopupItem: React.FC<{
     ].join(' ');
     return(
         <div className={className} onClick={() => {
+            if(!onClick) return;
             onClick();
             closePopups();
         }}>

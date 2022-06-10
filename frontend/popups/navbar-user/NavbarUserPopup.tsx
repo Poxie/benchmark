@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useId } from 'react';
 import { useAppSelector } from '../../redux/store';
 import { selectUserInfo } from '../../redux/user/selectors';
 import { NavbarUserPopupItem } from './NavbarUserPopupItem';
@@ -17,6 +17,8 @@ export const NavbarUserPopup = () => {
 
     const items = [
         { text: 'Profile', onClick: () => redirect(`/profile/${username}/overview`) },
+        { type: 'separator' },
+        { text: 'Account', onClick: () => redirect(`/profile/${username}/account`) },
         { text: 'Log out', type: 'danger', onClick: logout }
     ]
     return(

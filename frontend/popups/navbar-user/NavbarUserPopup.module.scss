@@ -1,6 +1,6 @@
 .item {
     padding: 10px 12px;
-    min-width: 140px;
+    min-width: 160px;
     white-space: nowrap;
     border-radius: calc(var(--border-radius-primary) / 2);
     cursor: pointer;
@@ -16,5 +16,12 @@
             background-color: var(--color-red);
             color: var(--text-light);
         }
+    }
+    &.separator {
+        padding: 0;
+        height: 1.5px;
+        margin: 4px 0;
+        background-color: var(--background-secondary);
+        cursor: default;
     }
 }
