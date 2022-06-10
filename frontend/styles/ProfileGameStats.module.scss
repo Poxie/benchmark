@@ -17,6 +17,7 @@
     padding: var(--spacing-primary);
     background-color: var(--background-secondary);
     border-radius: var(--border-radius-primary);
+    border: 2px solid var(--background-tertiary);
 
     h2 {
         margin-bottom: 0;
@@ -48,6 +49,7 @@
     padding: 16px;
     background-color: var(--background-secondary);
     border-radius: var(--border-radius-primary);
+    border: .1px solid var(--background-tertiary);
     margin-bottom: 5px;
     font-size: 13px;
     display: flex;
