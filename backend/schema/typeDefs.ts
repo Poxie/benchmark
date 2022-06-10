@@ -13,6 +13,8 @@ const typeDefs = gql`
 
         getProfileOverview(userId: String, username: String): ProfileOverview
         getProfileGameStats(userId: String!, gameId: String!): ProfileGameStats
+
+        getGames: [Game]!
     }
     type Mutation {
         createUser(username: String!, password: String!, name: String): User!
