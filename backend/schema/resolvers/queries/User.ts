@@ -7,7 +7,7 @@ import { Scores } from "../../../entities/Scores";
 dotenv.config();
 
 // Comparing passwords
-const comparePasswords = async (password: string, hashedPassword: string) => {
+export const comparePasswords = async (password: string, hashedPassword: string) => {
     return await bcrypt.compare(password, hashedPassword);
 }
 

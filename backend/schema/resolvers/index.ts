@@ -1,5 +1,5 @@
 import { CREATE_SCORE } from "./mutations/Scores";
-import { CREATE_USER } from "./mutations/User";
+import { CREATE_USER, UPDATE_USER } from "./mutations/User";
 import { ProfileGameStats } from "./ProfileGameStats";
 import { ProfileOverview } from "./ProfileOverview";
 import { GET_GAME_LEADERBOARD, GET_USER_HIGH_SCORE, GET_USER_SCORES } from "./queries/Scores";
@@ -20,7 +20,8 @@ const resolvers = {
     },
     Mutation: {
         createUser: CREATE_USER,
-        createScore: CREATE_SCORE
+        createScore: CREATE_SCORE,
+        updateUser: UPDATE_USER
     },
     HighScore: Score,
     Score,

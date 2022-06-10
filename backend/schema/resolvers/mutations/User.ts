@@ -1,5 +1,8 @@
 import { Users } from "../../../entities/Users";
 import bcrypt from 'bcrypt';
+import { UpdateUser } from "./types";
+import { comparePasswords } from "../queries/User";
+import { User } from "../../types";
 
 const encryptPassword = async (password: string) => {
     const hash = await bcrypt.hash(password, 12);
@@ -17,4 +20,37 @@ export const CREATE_USER = async (_: any, { username, password, name }: any) => 
     // Creating user
     const user = Users.create({ name, username, password: await encryptPassword(password) });
     return user.save();
+}
+
+export const UPDATE_USER: UpdateUser = async (_: any, { input }) => {
+    const { id, currentPassword, newPassword } = input;
+
+    const user = await Users.findOneBy({ id });
+    if(!user) throw new Error('User does not exist.');
+
+    // Updating user password
+    if(currentPassword && newPassword) {
+        const match = await comparePasswords(currentPassword, user.password);
+
+        if(match) {
+            user.password = await encryptPassword(newPassword);
+        } else {
+            throw new Error('Password does not match.');
+        }
+    }
+
+    // Updating other properties
+    delete input.currentPassword;
+    delete input.newPassword;
+
+    Object.entries(input).forEach(([property, value]) => {
+        if(value) {
+            user[property as keyof User] = value;
+        }
+    })
+
+    // Updating user
+    user.save();
+
+    return user;
 }
