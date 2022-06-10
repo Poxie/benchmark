@@ -16,3 +16,12 @@ export const CREATE_SCORE = gql`
         }
     }
 `
+
+export const UPDATE_USER = gql`
+    mutation updateUser($input: UpdateUserInput!) {
+        updateUser(input: $input) {
+            id
+            username
+        }
+    }
+`

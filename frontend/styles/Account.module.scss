@@ -1,0 +1,58 @@
+.container {
+    flex: 1;
+
+    p {
+        margin-top: 0;
+    }
+}
+.card {
+    display: flex;
+    border: 2px solid var(--background-tertiary);
+    border-radius: var(--border-radius-primary);
+    overflow: hidden;
+
+    &>div {
+        padding: var(--spacing-primary);
+    }
+}
+.card-header {
+    background-color: var(--background-secondary);
+    width: 400px;
+
+    h2 {
+        margin-top: 0;
+    }
+    span {
+        font-size: 15px;
+        color: var(--text-secondary);
+    }
+}
+.card-content {
+    flex: 1;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--spacing-primary);
+
+    span {
+        margin-bottom: var(--spacing-primary);
+    }
+    // This is the button
+    &>div:last-child {
+        align-self: flex-end;
+    }
+}
+.input {
+    padding: 16px !important;
+}
+
+.password {
+    padding-top: var(--spacing-primary);
+    margin-top: var(--spacing-primary);
+    border-top: 1px solid var(--background-tertiary);
+
+    div:first-child {
+        margin-bottom: 20px;
+    }
+}
