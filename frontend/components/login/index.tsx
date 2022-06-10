@@ -106,6 +106,7 @@ export const LoginPage = () => {
                     focusOnMount={true}
                     onChange={setPassword}
                     containerClassName={styles['input']}
+                    type={'password'}
                 />
                 <Button className={styles['button']} onClick={isLogin ? login : create}>
                     {title}
