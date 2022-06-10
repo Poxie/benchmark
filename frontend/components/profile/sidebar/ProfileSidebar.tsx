@@ -12,13 +12,14 @@ export const ProfileSidebar = () => {
 
     // Toggling active state on smaller devices
     const toggleActive = () => setActive(!active);
+    const close = () => setActive(false);
 
     // Closing if user press tab
-    useEffect(toggleActive, [gameId]);
+    useEffect(close, [gameId]);
 
     // Closing if user screen extends
     useEffect(() => {
-        if(device === 'computer') setActive(false);
+        if(device === 'computer') close();
     }, [device]);
 
     // Determining sidebar className
