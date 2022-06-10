@@ -46,11 +46,18 @@ export const UPDATE_USER: UpdateUser = async (_: any, { input }, { userId }) => 
     delete input.currentPassword;
     delete input.newPassword;
 
-    Object.entries(input).forEach(([property, value]) => {
+    for(const [property, value] of Object.entries(input)) {
+        // Making sure username is unique if property is username
+        if(property === 'username') {
+            const exists = await Users.findOneBy({ username: value });
+            if(exists) throw new Error('Username is unavailable.');
+        }
+    
+        // Otherwise update user property
         if(value) {
             user[property as keyof User] = value;
         }
-    })
+    }
 
     // Updating user
     user.save();
