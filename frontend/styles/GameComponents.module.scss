@@ -76,6 +76,10 @@
 .leaderboard-item, .leaderboard-item-main {
     display: flex;
     align-items: center;
+    
+    .username {
+        cursor: pointer;
+    }
 }
 .leaderboard-item {
     padding: calc(var(--spacing-primary) / 2);

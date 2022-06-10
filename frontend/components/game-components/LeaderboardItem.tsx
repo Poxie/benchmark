@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import styles from '../../styles/GameComponents.module.scss';
 import { Score } from './Leaderboard';
@@ -12,9 +13,11 @@ export const LeaderboardItem: React.FC<Score> = ({ ranking, score, user }) => {
                 >
                     {ranking}
                 </div>
-                <span>
-                    {user.name || user.username}
-                </span>
+                <Link href={`/profile/${user.username}/overview`}>
+                    <span className={styles['username']}>
+                        {user.name || user.username}
+                    </span>
+                </Link>
             </div>
             <span className={styles['leaderboard-score']}>
                 {score} pts
