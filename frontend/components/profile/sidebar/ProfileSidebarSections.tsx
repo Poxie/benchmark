@@ -9,15 +9,12 @@ import { ProfileSidebarSection } from './ProfileSidebarSection';
 
 export type SidebarTab = {
     text: string;
-    path: string;
+    path?: string;
+    onClick?: () => void;
     type?: 'danger'
 };
 export type SidebarSection = SidebarTab[];
 
-const accountTabs = [
-    { text: 'Manage Account', path: 'account' },
-    { text: 'Log out', path: 'log-out', type: 'danger' }
-]
 export const ProfileSidebarTabs = () => {
     const isMe = useAppSelector(selectProfileIsMe);
     
@@ -37,8 +34,20 @@ export const ProfileSidebarTabs = () => {
         path: 'overview'
     })
 
-    const sections = [gameTabs];
+    // Defining sidebar sections
+    const sections = [gameTabs] as SidebarSection[];
+
+    // Logged in options
+    const logout = () => {
+        window.localStorage.removeItem('token');
+        window.location.reload();
+    }
+    const accountTabs = [
+        { text: 'Manage Account', path: 'account' },
+        { text: 'Log out', onClick: logout, type: 'danger' }
+    ] as SidebarSection;
     if(isMe) sections.push(accountTabs);
+
     return(
         <div className={styles['sidebar-sections']}>
             {sections.map((section, key) => {
