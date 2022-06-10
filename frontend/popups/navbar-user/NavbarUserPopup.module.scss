@@ -1,3 +1,11 @@
+.group {
+    --separator-spacing: 4px;
+    &:not(:first-of-type) {
+        border-top: 2px solid var(--background-secondary);
+        margin-top: var(--separator-spacing);
+        padding-top: var(--separator-spacing);
+    }
+}
 .item {
     padding: 8px 12px;
     min-width: 160px;
