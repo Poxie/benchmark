@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
 import { connect } from 'react-redux';
-import { Account } from '../../../components/profile/account/Account';
+import { Account as AccountPage } from '../../../components/profile/account/Account';
 import { GET_PROFILE_BY_USERNAME } from '../../../graphql/queries';
 import { ProfileLayout } from '../../../layouts/ProfileLayout';
 import { setProfile } from '../../../redux/profile/actions';
@@ -36,7 +36,7 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async ({ q
         }
     }
 });
-const account = () => {
+const Account = () => {
     const meIsLoading = useAppSelector(selectUserIsLoading);
     const profileIsLoading = useAppSelector(selectProfileIsLoading);
     const isMe = useAppSelector(selectProfileIsMe);
@@ -51,9 +51,9 @@ const account = () => {
         )
     }
 
-    return <Account />;
+    return <AccountPage />;
 }
-account.getLayout = (page: ReactElement) => {
+Account.getLayout = (page: ReactElement) => {
     return(
         <ProfileLayout>
             {page}
@@ -61,4 +61,4 @@ account.getLayout = (page: ReactElement) => {
     )
 }
 
-export default connect((state: RootState) => state)(account);
+export default connect((state: RootState) => state)(Account);

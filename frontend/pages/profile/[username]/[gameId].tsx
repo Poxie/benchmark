@@ -47,12 +47,12 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async ({ q
     }
 });
 
-const gameInfo: React.FC<{
+const GameInfo: React.FC<{
     gameId: string
 }> & {getLayout: any} = ({ gameId }) => {
     return <ProfileGameStats gameId={gameId} />
 }
-gameInfo.getLayout = (page: ReactElement) => {
+GameInfo.getLayout = (page: ReactElement) => {
     return(
         <ProfileLayout>
             {page}
@@ -60,4 +60,4 @@ gameInfo.getLayout = (page: ReactElement) => {
     )
 }
 
-export default connect((state: RootState) => state)(gameInfo);
+export default connect((state: RootState) => state)(GameInfo);

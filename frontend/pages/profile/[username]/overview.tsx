@@ -2,7 +2,6 @@ import React, { ReactElement, useEffect } from 'react';
 import { client } from '../../_app';
 import { GetServerSidePropsContext } from 'next';
 import { GET_PROFILE_BY_USERNAME } from '../../../graphql/queries';
-import { Profile } from '../../../redux/profile/types';
 import { connect, useDispatch } from 'react-redux';
 import { setProfile } from '../../../redux/profile/actions';
 import { ProfileLayout } from '../../../layouts/ProfileLayout';
@@ -36,10 +35,10 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async ({ q
     }
 });
 
-const profile = () => {
+const Profile = () => {
     return <ProfileOverview />;
 }
-profile.getLayout = (page: ReactElement) => {
+Profile.getLayout = (page: ReactElement) => {
     return(
         <ProfileLayout>
             {page}
@@ -47,4 +46,4 @@ profile.getLayout = (page: ReactElement) => {
     )
 }
 
-export default connect((state: RootState) => state)(profile);
+export default connect((state: RootState) => state)(Profile);
