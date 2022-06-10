@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    margin-right: var(--sidebar-content-width);
+    max-width: calc(100% - var(--sidebar-width) - var(--sidebar-content-width));
 
     h1 {
         font-size: 20px;
@@ -57,4 +57,20 @@
 }
 .score-timestamp {
     color: var(--text-secondary);
+}
+@media (max-width: 1250px) {
+    .container {
+        max-width: calc(100% - var(--sidebar-width)) !important;
+    }
+}
+@media (max-width: 816px) {
+    .container {
+        margin-top: var(--sidebar-mobile-height);
+        max-width: 100% !important;
+    }
+}
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }
