@@ -74,3 +74,13 @@ export const GET_PROFILE_GAME_STATS = gql`
         }
     }
 `
+
+export const GET_GAMES = gql`
+    query getGames {
+        getGames {
+            id
+            title
+            description
+        }
+    }
+`
