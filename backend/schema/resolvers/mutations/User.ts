@@ -33,6 +33,12 @@ export const UPDATE_USER: UpdateUser = async (_: any, { input }, { userId }) => 
 
     // Updating user password
     if(currentPassword && newPassword) {
+        // Length requirement
+        if(newPassword.length < 5) {
+            throw new Error('Password must be at least 5 characters long.');
+        }
+
+        // Checking if current password match
         const match = await comparePasswords(currentPassword, user.password);
 
         if(match) {
@@ -51,6 +57,8 @@ export const UPDATE_USER: UpdateUser = async (_: any, { input }, { userId }) => 
         if(property === 'username') {
             const exists = await Users.findOneBy({ username: value });
             if(exists) throw new Error('Username is unavailable.');
+
+            if(value.length < 3) throw new Error('Username must be at least 3 characters long.');
         }
     
         // Otherwise update user property
