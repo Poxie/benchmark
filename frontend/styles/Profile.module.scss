@@ -15,27 +15,31 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+.sidebar-content {
+    width: var(--sidebar-content-width);
+    max-width: 100%;
+}
+.sidebar-top {
+    display: flex;
+    align-items: center;
 
     .avatar {
-        width: 200px;
-        height: 200px;
+        width: 45px;
+        height: 45px;
         background-color: var(--background-tertiary);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 70px;
-        font-weight: 600;
-        margin-bottom: var(--spacing-primary);
-    }
-    .username {
         font-size: 24px;
         font-weight: 600;
+        margin-right: 15px;
     }
-}
-.sidebar-content {
-    width: var(--sidebar-content-width);
-    max-width: 100%;
+    .username {
+        font-size: 20px;
+        font-weight: 600;
+    }
 }
 .sidebar-sections {
     --sidebar-tab-padding: 10px;
