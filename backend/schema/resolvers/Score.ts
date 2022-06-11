@@ -14,24 +14,23 @@ export const Score = {
         return game;
     },
     ranking: async ({ gameId, userId }: ScoreType) => {
-        const scores = await Scores.findBy({ gameId });
-
-        let ranking = 0;
-        const prevIds: string[] = [];
-        for(let i = 0; i < scores.length; i++) {
-            const score = scores[i];
-
-            // Making sure duplicate users aren't on the leaderboard
-            if(!prevIds.includes(score.userId)) {
-                ranking++;
-
-                // If score for user is found, break loop
-                if(score.userId === userId) break;
-
-                // Else push score to prevIds
-                prevIds.push(score.userId);
+        // Fetching ordered scores
+        const scores = await Scores.find({
+            where: {
+                gameId,
+            },
+            order: {
+                score: 'DESC'
             }
+        });
+
+        // Finding user ranking
+        let ranking = 1;
+        for(const score of scores) {
+            if(score.userId === userId) break;
+            ranking++;
         }
+
         return ranking;
     }
 }
