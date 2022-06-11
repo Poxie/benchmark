@@ -46,7 +46,7 @@ export const LoginPage = () => {
 
         // Making request to create user
         try {
-            const { errors } = await _create({ variables: {
+            await _create({ variables: {
                 username,
                 password
             } })
