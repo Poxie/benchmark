@@ -26,9 +26,13 @@ export const Score = {
 
         // Finding user ranking
         let ranking = 1;
+        let prevUsers: string[] = [];
         for(const score of scores) {
             if(score.userId === userId) break;
-            ranking++;
+            if(!prevUsers.includes(score.userId)) {
+                prevUsers.push(score.userId);
+                ranking++;
+            }
         }
 
         return ranking;
