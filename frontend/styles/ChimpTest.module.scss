@@ -1,0 +1,50 @@
+.container {
+    width: var(--main-width);
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.row {
+    display: flex;
+    gap: 15px;
+}
+.tile {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    font-weight: 700;
+    border-radius: var(--border-radius-primary);
+
+    &.active {
+        transition: border-color .2s, opacity .2s;
+        border: 5px solid var(--color-secondary);
+        cursor: pointer;
+
+        &:hover {
+            border-color: rgba(255,255,255,.6);
+        }
+        &.hidden {
+            background-color: rgb(255,255,255);
+            border-color: rgb(255,255,255);
+
+            &:hover:not(.completed) {
+                opacity: .7;
+            }
+        }
+        &.completed {
+            opacity: 0;
+            cursor: default;
+        }
+    }
+}
+.device-error {
+    text-align: center;
+    
+    h4 {
+        font-weight: 500;
+    }
+}
