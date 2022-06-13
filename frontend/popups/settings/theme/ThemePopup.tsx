@@ -14,8 +14,8 @@ export const ThemePopup = () => {
     }
 
     const items: ItemType[] = [
-        { text: 'Light Theme', onClick: () => setTheme('light'), closeOnClick: false },
-        { text: 'Dark Theme', onClick: () => setTheme('dark'), closeOnClick: false }
+        { text: 'Light Theme', onClick: () => setTheme('light'), closeOnClick: false, active: 'light' === active },
+        { text: 'Dark Theme', onClick: () => setTheme('dark'), closeOnClick: false, active: 'dark' === active }
     ]
     return(
         <div className={styles['theme']}>
