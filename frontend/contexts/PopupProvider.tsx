@@ -19,7 +19,7 @@ type Popup = {
 }
 type PopupContextType = {
     setPopup: (component: Component, ref: Ref, options?: Options ) => void;
-    pushPopup: (component: Component, ref: Ref, options?: Options ) => void;
+    pushPopup: (component: Component, ref?: Ref, options?: Options ) => void;
     closePopups: () => void;
     goBack: () => void;
     canGoBack: boolean;
@@ -35,6 +35,7 @@ export const PopupProvider: React.FC<{
     const [activePopup, setActivePopup] = useState(0);
     const [options, setOptions] = useState({} as Options | undefined);
     const isCentered = useRef<boolean | undefined>(false);
+    const currentElement = useRef<HTMLDivElement | null>(null);
 
     // Get popup position relative to element
     const getPopupPosition = (ref: Element) => {
@@ -91,6 +92,7 @@ export const PopupProvider: React.FC<{
         setOptions(options)
         const popup = createPopup(component, ref);
         setPopups(prev => [...prev, popup]);
+        currentElement.current = ref.current;
     }
     /**
      * Pushs a popup to the array
@@ -100,7 +102,7 @@ export const PopupProvider: React.FC<{
     const pushPopup: PopupContextType['pushPopup'] = (component, ref, options) => {
         isCentered.current = options?.centered;
         setOptions(options)
-        const popup = createPopup(component, ref);
+        const popup = createPopup(component, ref || currentElement);
         setPopups(prev => [...prev, popup]);
         setActivePopup(prev => prev + 1);
     }
@@ -123,6 +125,7 @@ export const PopupProvider: React.FC<{
     const closePopups = () => {
         setPopups([]);
         setActivePopup(0);
+        currentElement.current = null;
     }
 
     const popup = popups[activePopup];
