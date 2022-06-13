@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDeviceType } from '../../hooks/useDeviceType';
 import { AimTrainingIcon } from '../../icons/AimTrainingIcon';
 import { ChimpIcon } from '../../icons/ChimpIcon';
 import { NumberMemoryIcon } from '../../icons/NumberMemoryIcon';
@@ -20,11 +21,12 @@ const items = [
     { text: 'Reaction Time', category: 'Reaction', path: '/reaction-time', icon: ReactionTimeIcon, comingSoon: true }
 ];
 export const HomeCarousel = () => {
+    const device = useDeviceType();
     return(
         <div className={styles['carousel']}>
             <Carousel 
                 items={items}
-                itemGap={25}
+                itemGap={device !== 'mobile' ? 25 : 10}
                 renderItem={HomeCarouselItem}
             />
         </div>

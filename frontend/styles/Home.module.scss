@@ -51,29 +51,6 @@
         height: 100%;
     }
 }
-@media (max-width: 650px) {
-    .header-text {
-        text-align: center;
-        
-        h1 {
-            font-size: 50px;
-        }
-    }
-}
-@media (max-width: 500px) {
-    .header {
-        height: 350px;
-    }
-    .header-text {
-        h1 {
-            font-size: 35px;
-        }
-        span {
-            margin-top: 0;
-            font-size: 16px;
-        }
-    }
-}
 
 // Carousel
 .carousel {
@@ -87,6 +64,7 @@
 .carousel-item {
     height: 180px;
     background-color: var(--background-primary);
+    border: 2px solid var(--background-primary);
     border-radius: var(--border-radius-primary);
     min-width: 370px;
     cursor: pointer;
@@ -301,5 +279,53 @@
     }
     80%,95% {
         transform: translateY(-15px);
+    }
+}
+
+@media (max-width: 650px) {
+    .header-text {
+        text-align: center;
+        
+        h1 {
+            font-size: 50px;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .header {
+        height: 350px;
+    }
+    .header-text {
+        h1 {
+            font-size: 35px;
+        }
+        span {
+            margin-top: 0;
+            font-size: 16px;
+        }
+    }
+    .carousel-item {
+        min-width: 300px;
+        height: unset;
+    }
+    .carousel-item-icon, .carousel-item-text {
+        padding: calc(var(--spacing-primary) / 2);
+    }
+    .item-state {
+        font-size: 10px;
+    }
+    .carousel-item-title {
+        font-size: 16px;
+    }
+    .carousel-item-category {
+        font-size: 13px;
+    }
+    .tile-text {
+        h1 {
+            font-size: 32px;
+        }
+        p {
+            font-size: 17px;
+        }
     }
 }
