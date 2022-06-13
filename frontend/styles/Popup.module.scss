@@ -45,6 +45,16 @@
     border-radius: calc(var(--border-radius-primary) / 2);
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+        width: 12px;
+        height: 12px;
+        fill: var(--text-primary);
+        display: block;
+    }
 
     &:hover {
         background-color: var(--background-tertiary);

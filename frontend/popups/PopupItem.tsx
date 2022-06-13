@@ -24,9 +24,8 @@ export const PopupItem: React.FC<ItemType> = ({ text, onClick, icon, closeOnClic
             <span>
                 {text}
             </span>
-            <div>
-                {icon}
-            </div>
+            
+            {icon}
         </div>
     )
 }
