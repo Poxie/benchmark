@@ -34,6 +34,7 @@
         max-width: 100%;
         display: block;
         margin-top: calc(var(--spacing-primary) + 7px);
+        color: var(--text-secondary);
     }
 }
 .addon-text {
@@ -190,6 +191,7 @@
     }
     p {
         font-size: 20px;
+        color: var(--text-secondary);
     }
 }
 .tile-media {
