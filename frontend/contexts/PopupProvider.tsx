@@ -131,6 +131,7 @@ export const PopupProvider: React.FC<{
     */
     const closePopups = () => {
         setPopups([]);
+        setGoBackTitles([]);
         setActivePopup(0);
         currentElement.current = null;
     }
