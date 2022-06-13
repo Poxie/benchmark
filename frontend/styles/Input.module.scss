@@ -13,9 +13,9 @@
 .input {
     padding: 12px;
     font-size: 15px;
-    border: none;
     outline: none;
     background-color: var(--input-background);
+    border: var(--input-border);
     color: var(--text-primary);
     border-radius: 8px;
 }
