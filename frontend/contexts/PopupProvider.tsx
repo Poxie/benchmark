@@ -103,7 +103,7 @@ export const PopupProvider: React.FC<{
     const pushPopup: PopupContextType['pushPopup'] = (component, ref, options) => {
         isCentered.current = options?.centered;
         setGoBackTitles(prev => [...prev, ...[options?.title]])
-        setOptions(options);
+        setOptions(prev => ({...prev, ...options}));
         const popup = createPopup(component, ref || currentElement);
         setPopups(prev => [...prev, popup]);
         setActivePopup(prev => prev + 1);
