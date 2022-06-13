@@ -59,12 +59,6 @@
 .score-timestamp {
     color: var(--text-secondary);
 }
-@media (max-width: 816px) {
-    .container {
-        margin-top: var(--sidebar-mobile-height);
-        max-width: 100% !important;
-    }
-}
 @media (max-width: 600px) {
     .cards {
         grid-template-columns: 1fr;
