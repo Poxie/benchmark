@@ -19,7 +19,7 @@ type Popup = {
 }
 type PopupContextType = {
     setPopup: (component: Component, ref: Ref, options?: Options ) => void;
-    pushPopup: (component: Component, ref?: Ref, options?: Options ) => void;
+    pushPopup: (component: Component, ref?: Ref, options?: Options & { title?: string } ) => void;
     closePopups: () => void;
     goBack: () => void;
     canGoBack: boolean;
@@ -33,6 +33,7 @@ export const PopupProvider: React.FC<{
 }> = ({ children }) => {
     const [popups, setPopups] = useState<Popup[]>([]);
     const [activePopup, setActivePopup] = useState(0);
+    const [goBackTitles, setGoBackTitles] = useState<(string | undefined)[]>([]);
     const [options, setOptions] = useState({} as Options | undefined);
     const isCentered = useRef<boolean | undefined>(false);
     const currentElement = useRef<HTMLDivElement | null>(null);
@@ -101,7 +102,8 @@ export const PopupProvider: React.FC<{
     */
     const pushPopup: PopupContextType['pushPopup'] = (component, ref, options) => {
         isCentered.current = options?.centered;
-        setOptions(options)
+        setGoBackTitles(prev => [...prev, ...[options?.title]])
+        setOptions(options);
         const popup = createPopup(component, ref || currentElement);
         setPopups(prev => [...prev, popup]);
         setActivePopup(prev => prev + 1);
@@ -117,6 +119,11 @@ export const PopupProvider: React.FC<{
             newPopups.pop();
             return newPopups;
         });
+        setGoBackTitles(prev => {
+            const newTitles = [...prev];
+            newTitles.pop();
+            return newTitles;
+        })
         setActivePopup(prev => prev - 1);
     }
     /**
@@ -129,6 +136,7 @@ export const PopupProvider: React.FC<{
     }
 
     const popup = popups[activePopup];
+    const goBackTitle = goBackTitles[activePopup - 1] || 'Go back';
     const canGoBack = popups.length > 1;
     const value = {
         setPopup,
@@ -147,6 +155,7 @@ export const PopupProvider: React.FC<{
                         top={popup.position.top} 
                         left={popup.position.left}
                         canGoBack={canGoBack}
+                        goBackTitle={goBackTitle}
                         options={options}
                         key={popup.id}
                     >

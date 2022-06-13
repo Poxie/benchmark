@@ -11,7 +11,7 @@ export const SettingsPopup = () => {
 
     const groups = [
         [
-            { text: 'Theme', onClick: () => pushPopup(<ThemePopup />), icon: <ArrowDefaultIcon />, closeOnClick: false }
+            { text: 'Theme', onClick: () => pushPopup(<ThemePopup />, undefined, { title: 'Theme' }), icon: <ArrowDefaultIcon />, closeOnClick: false }
         ]
     ] as ItemType[][];
 

@@ -8,9 +8,10 @@ export const Popup: React.FC<{
     left: number;
     top: number;
     canGoBack: boolean;
+    goBackTitle: string;
     options: Options | undefined;
     children: any;
-}> = ({ children, left: _left, top, canGoBack, options }) => {
+}> = ({ children, left: _left, top, canGoBack, goBackTitle, options }) => {
     const ref = useRef<HTMLDivElement>(null);
     const { closePopups, goBack } = usePopup();
     const [left, setLeft] = useState(_left);
@@ -58,7 +59,7 @@ export const Popup: React.FC<{
             {canGoBack && (
                 <div className={styles['go-back-btn']} onClick={goBack}>
                     <ArrowIcon />
-                    Go back
+                    {goBackTitle}
                 </div>
             )}
             {children}
