@@ -134,6 +134,7 @@ export const PopupProvider: React.FC<{
         setGoBackTitles([]);
         setActivePopup(0);
         currentElement.current = null;
+        setOptions({});
     }
 
     const popup = popups[activePopup];
