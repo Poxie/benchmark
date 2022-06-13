@@ -8,6 +8,9 @@
   --color-primary: #6925D9;
   --color-secondary: #5D20C2;
   --color-tertiary: #2e60c5;
+  --button-text-primary: #616161;
+  --button-background-light: #fff;
+  --button-background-light-hover: #e1e1e1;
   --text-primary: #616161;
   --text-secondary: #858585;
   --text-light: #fff;
@@ -21,6 +24,19 @@
   --popup-background-tertiary: #EAEAEA;
   --spacing-primary: 25px;
   --border-radius-primary: 12px;
+  --box-shadow-primary: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+.dark {
+  --text-primary: #f1f4fa;
+  --text-secondary: #9a9d9f;
+  --background-primary: #2e2f3b;
+  --background-secondary: #292a34;
+  --background-tertiary: #242424;
+  --input-background: #292929;
+  --popup-background-primary: #1e1f27;
+  --popup-background-secondary: #23252e;
+  --popup-background-tertiary: #303138;
+  --box-shadow-primary: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(0 0 0 / 22%);
 }
 
 @media (max-width: 720px) {
@@ -36,6 +52,10 @@ body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: var(--text-primary);
+  background-color: var(--background-primary);
+}
+body {
+  padding-top: var(--navbar-height);
 }
 
 a {

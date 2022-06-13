@@ -13,12 +13,12 @@
         background-color: var(--color-secondary);
     }
     &.light {
-        background-color: #fff;
-        color: var(--text-primary);
+        background-color: var(--button-background-light);
+        color: var(--button-text-primary);
         font-weight: 600;
 
         &:hover {
-            background-color: var(--background-tertiary);
+            background-color: var(--button-background-light-hover);
         }
     }
     &.disabled {

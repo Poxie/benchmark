@@ -14,13 +14,13 @@
     align-items: center;
     padding: 6px 10px 12px 10px;
     margin-bottom: 6px;
-    border-bottom: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--popup-background-secondary);
 
     svg {
         width: 14px;
         height: 14px;
         transform: rotate(180deg);
-        fill: var(--color-primary);
+        fill: var(--text-primary);
         margin-right: 10px;
         margin-bottom: -1px;
     }
@@ -33,7 +33,7 @@
 .group {
     --separator-spacing: 4px;
     &:not(:first-child) {
-        border-top: 2px solid var(--background-secondary);
+        border-top: 2px solid var(--popup-background-secondary);
         margin-top: var(--separator-spacing);
         padding-top: var(--separator-spacing);
     }
@@ -57,7 +57,7 @@
     }
 
     &:hover {
-        background-color: var(--background-tertiary);
+        background-color: var(--popup-background-tertiary);
     }
     &.danger {
         color: var(--color-red);
@@ -71,7 +71,7 @@
         padding: 0;
         height: 1.5px;
         margin: 4px 0;
-        background-color: var(--background-secondary);
+        background-color: var(--popup-background-secondary);
         cursor: default;
     }
 }
