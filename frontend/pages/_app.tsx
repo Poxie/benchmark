@@ -51,6 +51,11 @@ type AppPropsWithLayout = AppProps & {
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const store = useStore();
   const getLayout = Component.getLayout ?? ((page) => page);
+
+  // Setting user theme
+  useEffect(() => {
+    document.body.classList.add(localStorage.getItem('theme') || 'light');
+  }, []);
   
   return(
     <Provider store={store}>
