@@ -45,6 +45,28 @@
     cursor: pointer;
     padding: 8px 0;
 }
+.right {
+    display: flex;
+    align-items: center;
+}
+.settings-button {
+    margin-right: calc(var(--spacing-primary) / 2);
+    border-radius: var(--border-radius-primary);
+    padding: 10px;
+    cursor: pointer;
+
+    svg {
+        width: 25px;
+        display: block;
+        fill: var(--text-secondary);
+    }
+    &:hover, &.active {
+        background-color: var(--background-secondary);
+    }
+    &:active {
+        background-color: var(--background-tertiary);
+    }
+}
 
 @media (max-width: 720px) {
     .show-mobile {
