@@ -7,17 +7,20 @@ export type ItemType = {
     onClick?: () => void;
     closeOnClick?: boolean;
     type?: 'default' | 'danger';
+    disabled?: boolean;
     icon?: any;
 }
-export const PopupItem: React.FC<ItemType> = ({ text, onClick, icon, closeOnClick=true, type='default' }) => {
+export const PopupItem: React.FC<ItemType> = ({ text, onClick, icon, disabled, closeOnClick=true, type='default' }) => {
     const { closePopups } = usePopup();
 
     const className = [
         styles['item'],
-        styles[type]
+        styles[type],
+        disabled ? styles['disabled'] : ''
     ].join(' ');
     return(
         <div className={className} onClick={() => {
+            if(disabled) return;
             onClick && onClick();
             closeOnClick && closePopups();
         }}>

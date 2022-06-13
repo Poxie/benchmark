@@ -56,16 +56,20 @@
         display: block;
     }
 
-    &:hover {
+    &:hover:not(.disabled) {
         background-color: var(--popup-background-tertiary);
     }
     &.danger {
         color: var(--color-red);
 
-        &:hover {
+        &:hover:not(.disabled) {
             background-color: var(--color-red);
             color: var(--text-light);
         }
+    }
+    &.disabled {
+        opacity: .7;
+        cursor: default;
     }
     &.separator {
         padding: 0;
