@@ -21,7 +21,7 @@
     width: var(--sidebar-content-width);
     max-width: 100%;
     position: sticky;
-    top: calc(var(--spacing-primary) * 2);
+    top: calc(var(--spacing-primary) + var(--navbar-height));
 }
 .sidebar-top {
     display: flex;
