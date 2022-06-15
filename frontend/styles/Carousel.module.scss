@@ -18,7 +18,7 @@
         cursor: pointer;
         fill: var(--text-primary);
     }
-    &>div:first-child {
+    &>button:first-child {
         svg {
             transform: rotate(180deg);
         }

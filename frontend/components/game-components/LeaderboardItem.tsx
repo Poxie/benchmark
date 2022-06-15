@@ -13,11 +13,11 @@ export const LeaderboardItem: React.FC<Score> = ({ ranking, score, user }) => {
                 >
                     {ranking}
                 </div>
-                <Link href={`/profile/${user.username}/overview`}>
-                    <span className={styles['username']}>
+                <span className={styles['username']}>
+                    <Link href={`/profile/${user.username}/overview`}>
                         {user.name || user.username}
-                    </span>
-                </Link>
+                    </Link>
+                </span>
             </div>
             <span className={styles['leaderboard-score']}>
                 {score} pts

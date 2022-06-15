@@ -10,10 +10,10 @@ export const HighScoreStatsFooter: React.FC<{
 
     return(
         <div className={styles['stats-footer']}>
-            <Link href={`/profile/${username}/${gameId}`}>
-                <div className={styles['stats-footer-button']}>
+            <Link href={`/profile/${username}/${gameId}`} tabIndex={0}>
+                <button className={styles['stats-footer-button']}>
                     View more
-                </div>
+                </button>
             </Link>
         </div>
     )

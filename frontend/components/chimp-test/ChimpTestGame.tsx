@@ -118,16 +118,17 @@ export const ChimpTestGame: React.FC<{
                             completed ? styles['completed'] : ''
                         ].join(' ');
                         return(
-                            <div 
+                            <button 
                                 className={className} 
                                 key={`column-${columnIndex}`}
                                 onClick={() => {
                                     if(completed || !tile) return;
                                     tileClick(rowIndex, columnIndex);
                                 }}
+                                tabIndex={(tile && !completed) ? 0 : -1}
                             >
                                 {!hidden && tile}
-                            </div>
+                            </button>
                         )
                     })}
                 </div>

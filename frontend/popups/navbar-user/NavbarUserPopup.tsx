@@ -24,9 +24,6 @@ export const NavbarUserPopup = () => {
             { text: 'Profile', onClick: () => redirect(`/profile/${username}/overview`) },
         ],
         [
-            { text: 'Settings', onClick: () => pushPopup(<SettingsPopup />, undefined, { title: 'Settings' }), closeOnClick: false }
-        ],
-        [
             { text: 'Account', onClick: () => redirect(`/profile/${username}/account`) },
             { text: 'Log out', type: 'danger', onClick: logout }
         ]

@@ -23,9 +23,9 @@ export const ProfileSidebarTab: React.FC<SidebarTab> = ({ path, text, type, onCl
     ].join(' ');
 
     const tab = (
-        <div className={className} onClick={onClick}>
+        <button className={className} onClick={onClick}>
             {text}
-        </div>
+        </button>
     );
     
     // If path undefined, just return tab

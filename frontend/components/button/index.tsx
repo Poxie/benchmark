@@ -17,12 +17,12 @@ export const Button: React.FC<{
         disabled ? styles['disabled'] : ''
     ].join(' ');
     return(
-        <div 
+        <button 
             className={className}
             onClick={!(disabled || loading) ? onClick : undefined}
         >
             {!loading && children}
             {loading && <LoadingSpinner className={styles['loading-icon']} />}
-        </div>
+        </button>
     )
 }

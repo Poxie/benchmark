@@ -10,12 +10,19 @@ export const ProfileOverviewHighScoreHeader: React.FC<{
     onClick: () => void;
 }> = ({ game, score, onClick }) => {
     return(
-        <div className={styles['high-score-header']} onClick={onClick}>
+        <a 
+            className={styles['high-score-header']} 
+            onClick={e => {
+                e.preventDefault();
+                onClick();
+            }}
+            href={'#'}
+        >
             <div className={styles['left']}>
                 <Link href={`/${game.id}`}>
-                    <div>
+                    <button className={styles['play-button']}>
                         <FilledArrowIcon />
-                    </div>
+                    </button>
                 </Link>
                 <span>
                     {game.title}
@@ -28,6 +35,6 @@ export const ProfileOverviewHighScoreHeader: React.FC<{
 
                 <FilledArrowIcon />
             </div>
-        </div>
+        </a>
     )
 }

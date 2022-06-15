@@ -14,7 +14,7 @@ export const HomeCarouselItem: React.FC<{
     return(
         <div className={styles['carousel-item']}>
             <Link href={comingSoon ? '' : path}>
-                <div className={styles['carousel-item-content']}>
+                <button className={styles['carousel-item-content']}>
                     {(comingSoon || isBeta) && (
                         <div className={styles['item-state'] + (isBeta ? ` ${styles['beta']}` : '')}>
                             {comingSoon ? 'Coming Soon' : 'BETA'}
@@ -33,7 +33,7 @@ export const HomeCarouselItem: React.FC<{
                             {category}
                         </span>
                     </div>
-                </div>
+                </button>
             </Link>
         </div>
     )

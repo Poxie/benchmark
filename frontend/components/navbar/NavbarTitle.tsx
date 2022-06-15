@@ -4,10 +4,10 @@ import styles from '../../styles/Navbar.module.scss';
 
 export const NavbarTitle = () => {
     return(
-        <Link href="/">
-            <h2 className={styles['title']}>
+        <h2 className={styles['title']}>
+            <Link href="/">
                 {process.env.NEXT_PUBLIC_WEBSITE_NAME}
-            </h2>
-        </Link>
+            </Link>
+        </h2>
     )
 }

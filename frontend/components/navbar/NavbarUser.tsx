@@ -9,16 +9,16 @@ export const NavbarUser: React.FC<{
     user: User;
 }> = ({ user: { id, username } }) => {
     const { setPopup } = usePopup();
-    const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLButtonElement>(null);
     const deviceType = useDeviceType();
 
     return(
-        <div 
+        <button 
             className={styles['user']}
             onClick={() => setPopup(<NavbarUserPopup />, ref, { centered: deviceType === 'mobile' })} 
             ref={ref}
         >
             {username}
-        </div>
+        </button>
     )
 }

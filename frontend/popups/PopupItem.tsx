@@ -21,16 +21,21 @@ export const PopupItem: React.FC<ItemType> = ({ text, onClick, icon, disabled, a
         active ? styles['active'] : ''
     ].join(' ');
     return(
-        <div className={className} onClick={() => {
-            if(disabled) return;
-            onClick && onClick();
-            closeOnClick && closePopups();
-        }}>
+        <a 
+            href={'#'}
+            className={className} 
+            onClick={e => {
+                e.preventDefault();
+                if(disabled) return;
+                onClick && onClick();
+                closeOnClick && closePopups();
+            }}
+        >
             <span>
                 {text}
             </span>
             
             {icon}
-        </div>
+        </a>
     )
 }

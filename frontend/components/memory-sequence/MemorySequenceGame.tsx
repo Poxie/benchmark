@@ -90,7 +90,7 @@ export const MemorySequenceGame: React.FC<{
                         isActive ? styles['active'] : ''
                     ].join(' ');
                     return(
-                        <div 
+                        <button 
                             className={className}
                             onClick={() => handleClick(key)}
                             key={key}

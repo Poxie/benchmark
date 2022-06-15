@@ -67,6 +67,17 @@ a {
   color: inherit;
   text-decoration: none;
 }
+button {
+  border: none;
+  background-color: transparent;
+  display: block;
+  color: inherit;
+  align-items: unset;
+  text-align: unset;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+}
 
 * {
   box-sizing: border-box;

@@ -12,7 +12,7 @@ import { SettingsPopup } from '../../popups/settings/SettingsPopup';
 export const NavbarOptions = () => {
     const router = useRouter();
     const { setPopup } = usePopup();
-    const settingsRef = useRef<HTMLDivElement>(null);
+    const settingsRef = useRef<HTMLButtonElement>(null);
     const loading = useAppSelector(selectUserIsLoading);
     const userInfo = useAppSelector(selectUserInfo);
 
@@ -21,13 +21,13 @@ export const NavbarOptions = () => {
 
     return(
         <div className={styles['right']}>
-            <div 
+            <button 
                 className={styles['settings-button']} 
                 onClick={() => setPopup(<SettingsPopup />, settingsRef)}
                 ref={settingsRef}
             >
                 <GearIcon />
-            </div>
+            </button>
             {userInfo ? (
                 <NavbarUser user={userInfo} />
             ) : (

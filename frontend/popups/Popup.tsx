@@ -57,10 +57,17 @@ export const Popup: React.FC<{
             ref={ref}
         >   
             {canGoBack && (
-                <div className={styles['go-back-btn']} onClick={goBack}>
+                <a 
+                    className={styles['go-back-btn']} 
+                    onClick={e => {
+                        e.preventDefault();
+                        goBack();
+                    }}
+                    href={'#'}
+                >
                     <ArrowIcon />
                     {goBackTitle}
-                </div>
+                </a>
             )}
             {children}
         </motion.div>
