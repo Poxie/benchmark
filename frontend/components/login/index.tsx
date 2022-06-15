@@ -2,7 +2,7 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { CREATE } from '../../graphql/mutations';
+import { CREATE_USER } from '../../graphql/mutations';
 import { LOGIN } from '../../graphql/queries';
 import styles from '../../styles/Login.module.scss';
 import { Button } from '../button';
@@ -21,7 +21,7 @@ export const LoginPage = () => {
     const isLogin = type === 'login';
 
     const [_login] = useLazyQuery(LOGIN);
-    const [_create] = useMutation(CREATE);
+    const [_create] = useMutation(CREATE_USER);
 
     const login = async () => {
         // Returning if username or password is empty
