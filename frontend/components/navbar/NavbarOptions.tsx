@@ -20,21 +20,21 @@ export const NavbarOptions = () => {
     if(loading) return null;
 
     return(
-        userInfo ? (
-            <NavbarUser user={userInfo} />
-        ) : (
-            <div className={styles['right']}>
-                <div 
-                    className={styles['settings-button']} 
-                    onClick={() => setPopup(<SettingsPopup />, settingsRef)}
-                    ref={settingsRef}
-                >
-                    <GearIcon />
-                </div>
+        <div className={styles['right']}>
+            <div 
+                className={styles['settings-button']} 
+                onClick={() => setPopup(<SettingsPopup />, settingsRef)}
+                ref={settingsRef}
+            >
+                <GearIcon />
+            </div>
+            {userInfo ? (
+                <NavbarUser user={userInfo} />
+            ) : (
                 <Button onClick={() => router.push(`/login?redirect_uri=${encodeURIComponent(router.asPath)}`)}>
                     Sign in
                 </Button>
-            </div>
-        )
+            )}
+        </div>
     )
 }
