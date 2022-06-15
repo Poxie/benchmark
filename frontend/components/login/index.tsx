@@ -28,9 +28,12 @@ export const LoginPage = () => {
     // When input changes, remove feedback
     useEffect(() => setFeedback(''), [password, username, isLogin]);
 
+    const emptyFields = () => {
+        setFeedback('Fields are empty.');
+    }
     const login = async () => {
         // Returning if username or password is empty
-        if(!username || !password) return;
+        if(!username || !password) return emptyFields();
         
         // Updating loading state
         setLoading(true);
@@ -54,7 +57,7 @@ export const LoginPage = () => {
     }
     const create = async () => {
         // Returning if username or password is empty
-        if(!username || !password) return;
+        if(!username || !password) return emptyFields();
 
         // Updating loading state
         setLoading(true);
