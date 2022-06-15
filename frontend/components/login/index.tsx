@@ -16,12 +16,16 @@ type QueryParams = {
 export const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [feedback, setFeedback] = useState('');
     const router = useRouter();
     const { type='login', redirect_uri='/' } = router.query as QueryParams;
     const isLogin = type === 'login';
 
     const [_login] = useLazyQuery(LOGIN);
     const [_create] = useMutation(CREATE_USER);
+
+    // When input changes, remove feedback
+    useEffect(() => setFeedback(''), [password, username, isLogin]);
 
     const login = async () => {
         // Returning if username or password is empty
@@ -34,7 +38,7 @@ export const LoginPage = () => {
         } });
 
         // If there were errors with login
-        if(error) return console.log(error);
+        if(error) return setFeedback(error.message);
 
         // Setting token in localStorage
         window.localStorage.token = data.login.token;
@@ -50,8 +54,8 @@ export const LoginPage = () => {
                 username,
                 password
             } })
-        } catch(error) {
-            console.log(error);
+        } catch(error: any) {
+            setFeedback(error.message);
             return;
         }
 
@@ -116,7 +120,16 @@ export const LoginPage = () => {
                     containerClassName={styles['input']}
                     type={'password'}
                 />
-                <Button className={styles['button']} onClick={isLogin ? login : create}>
+                {feedback && (
+                    <span className={styles['feedback']}>
+                        {feedback}
+                    </span>
+                )}
+                <Button 
+                    className={styles['button']} 
+                    onClick={isLogin ? login : create}
+                    disabled={!!feedback}
+                >
                     {title}
                 </Button>
                 <span onClick={swap} className={styles['footer']}>

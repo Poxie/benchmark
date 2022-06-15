@@ -24,6 +24,13 @@
 .input, .button {
     margin-bottom: var(--spacing-primary);
 }
+.feedback {
+    display: block;
+    margin-bottom: calc(var(--spacing-primary) / 2);
+    margin-top: calc(-1 * var(--spacing-primary) / 2);
+    font-size: 15px;
+    color: var(--text-secondary);
+}
 .footer {
     display: block;
     text-align: center;
