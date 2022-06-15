@@ -3,11 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Popup } from '../popups/Popup';
 
 type Component = JSX.Element | React.FC<any>;
-type Ref = React.RefObject<HTMLDivElement>;
+type Ref = React.RefObject<HTMLDivElement | HTMLButtonElement>;
 export type Options = {
     centered?: boolean;
 }
-type Element = HTMLDivElement | null;
+type Element = HTMLDivElement | HTMLButtonElement | null;
 type Popup = {
     id: number;
     element: Element;
@@ -36,7 +36,7 @@ export const PopupProvider: React.FC<{
     const [goBackTitles, setGoBackTitles] = useState<(string | undefined)[]>([]);
     const [options, setOptions] = useState({} as Options | undefined);
     const isCentered = useRef<boolean | undefined>(false);
-    const currentElement = useRef<HTMLDivElement | null>(null);
+    const currentElement = useRef<Element>(null);
 
     // Get popup position relative to element
     const getPopupPosition = (ref: Element) => {
