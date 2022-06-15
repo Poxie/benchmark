@@ -8,16 +8,14 @@
     padding-top: var(--navbar-height);
 }
 .content {
-    width: 500px;
+    width: 700px;
     background-color: var(--background-primary);
     padding: calc(var(--spacing-primary) * 2);
     border-radius: var(--border-radius-primary);
-    border: 2px solid var(--background-tertiary);
 
     h1 {
-        font-size: 25px;
+        font-size: 32px;
         margin: 0;
-        text-align: center;
         margin-bottom: var(--spacing-primary);
     }
 }
@@ -38,6 +36,9 @@
     opacity: .8;
     cursor: pointer;
     transition: .2s opacity;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
 
     &:hover {
         opacity: 1;
