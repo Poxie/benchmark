@@ -17,6 +17,7 @@ export const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [feedback, setFeedback] = useState('');
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
     const { type='login', redirect_uri='/' } = router.query as QueryParams;
     const isLogin = type === 'login';
@@ -30,6 +31,9 @@ export const LoginPage = () => {
     const login = async () => {
         // Returning if username or password is empty
         if(!username || !password) return;
+        
+        // Updating loading state
+        setLoading(true);
 
         // Making request to login
         const { data, error } = await  _login({ variables: {
@@ -38,7 +42,11 @@ export const LoginPage = () => {
         } });
 
         // If there were errors with login
-        if(error) return setFeedback(error.message);
+        if(error) {
+            setFeedback(error.message);
+            setLoading(false);
+            return
+        }
 
         // Setting token in localStorage
         window.localStorage.token = data.login.token;
@@ -48,6 +56,9 @@ export const LoginPage = () => {
         // Returning if username or password is empty
         if(!username || !password) return;
 
+        // Updating loading state
+        setLoading(true);
+
         // Making request to create user
         try {
             await _create({ variables: {
@@ -56,6 +67,7 @@ export const LoginPage = () => {
             } })
         } catch(error: any) {
             setFeedback(error.message);
+            setLoading(false);
             return;
         }
 
@@ -129,6 +141,7 @@ export const LoginPage = () => {
                     className={styles['button']} 
                     onClick={isLogin ? login : create}
                     disabled={!!feedback}
+                    loading={loading}
                 >
                     {title}
                 </Button>
