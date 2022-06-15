@@ -85,7 +85,8 @@ export const LoginPage = () => {
         window.location.href = redirect_uri;
     }
 
-    const swap = () => {
+    const swap = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
         const newType = isLogin ? 'create' : 'login';
         let path = `/login?type=${newType}`;
         if(redirect_uri) {
@@ -96,15 +97,16 @@ export const LoginPage = () => {
     }
 
     const title = isLogin ? (
-        'Login to Account'
+        'Login to Your Account'
     ) : (
-        'Create Account'
+        'Create Your Account'
     )
     const footer = isLogin ? (
         'Don\'t have an account?'
     ) : (
         'Already have an account?'
     )
+    const isValid = username && password;
     return(
         <>
         <Head>
@@ -143,14 +145,16 @@ export const LoginPage = () => {
                 <Button 
                     className={styles['button']} 
                     onClick={isLogin ? login : create}
-                    disabled={!!feedback}
+                    disabled={!!feedback || !isValid}
                     loading={loading}
                 >
                     {title}
                 </Button>
-                <span onClick={swap} className={styles['footer']}>
-                    {footer}
-                </span>
+                <div className={styles['footer']}>
+                    <a onClick={swap} href={'#'}>
+                        {footer}
+                    </a>
+                </div>
             </div>
         </div>
         </>
