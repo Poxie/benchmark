@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Button.module.scss';
+import { LoadingSpinner } from '../loading-spinner/LoadingSpinner';
 
 export const Button: React.FC<{
     children: any;
@@ -7,7 +8,8 @@ export const Button: React.FC<{
     type?: 'primary' | 'light';
     className?: string;
     disabled?: boolean;
-}> = ({ onClick, children, type='primary', className, disabled }) => {
+    loading?: boolean;
+}> = ({ onClick, children, type='primary', className, disabled, loading }) => {
     className = [
         styles['container'],
         styles[type],
@@ -17,9 +19,10 @@ export const Button: React.FC<{
     return(
         <div 
             className={className}
-            onClick={!disabled ? onClick : undefined}
+            onClick={!(disabled || loading) ? onClick : undefined}
         >
-            {children}
+            {!loading && children}
+            {loading && <LoadingSpinner className={styles['loading-icon']} />}
         </div>
     )
 }
