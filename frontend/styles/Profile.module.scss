@@ -295,7 +295,7 @@
     }
     div.sidebar {
         align-items: unset;
-        position: absolute;
+        position: fixed;
         z-index: 13;
         padding: calc(var(--spacing-primary) / 2) var(--spacing-primary) !important;
         width: 100%;
