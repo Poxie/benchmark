@@ -130,7 +130,6 @@ export const LoginPage = () => {
                 <Input 
                     label={'Password'}
                     name={'password'}
-                    focusOnMount={true}
                     onChange={setPassword}
                     containerClassName={styles['input']}
                     type={'password'}
