@@ -38,13 +38,9 @@
     span {
         margin-bottom: var(--spacing-primary);
     }
-    // This is the button
-    &>div:last-child {
+    &>button:last-child {
         align-self: flex-end;
     }
-}
-.input {
-    padding: 16px !important;
 }
 
 .password {

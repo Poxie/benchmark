@@ -3,7 +3,6 @@ import styles from '../../styles/Input.module.scss';
 
 export const Input: React.FC<{
     focusOnMount?: boolean;
-    placeholder?: string;
     containerClassName?: string;
     inputClassName?: string;
     onChange?: (value: string) => void;
@@ -12,7 +11,7 @@ export const Input: React.FC<{
     name?: string;
     label?: string;
     type?: HTMLInputTypeAttribute
-}> = ({ focusOnMount, placeholder, containerClassName, inputClassName, onChange, onSubmit, name, label, type='text', value: _value }) => {
+}> = ({ focusOnMount, containerClassName, inputClassName, onChange, onSubmit, name, label, type='text', value: _value }) => {
     const [value, setValue] = useState(_value || '');
     const ref = useRef<HTMLInputElement>(null);
 
@@ -44,21 +43,21 @@ export const Input: React.FC<{
     ].join(' ');
     return(
         <div className={containerClassName}>
-            {label && (
-                <label htmlFor={name}>
-                    {label}
-                </label>
-            )}
             <input 
                 type={type}
-                placeholder={placeholder}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 className={inputClassName}
                 value={value}
                 name={name}
+                required
                 ref={ref}
             />
+            {label && (
+                <label htmlFor={name}>
+                    {label}
+                </label>
+            )}
         </div>
     )
 }

@@ -121,7 +121,6 @@ export const LoginPage = () => {
                     {title}
                 </h1>
                 <Input 
-                    placeholder={'Username'}
                     label={'Username'}
                     name={'username'}
                     focusOnMount={true}
@@ -129,7 +128,6 @@ export const LoginPage = () => {
                     containerClassName={styles['input']}
                 />
                 <Input 
-                    placeholder={'Password...'}
                     label={'Password'}
                     name={'password'}
                     focusOnMount={true}

@@ -100,7 +100,6 @@ export const AccountDetails = () => {
         >
             <Input 
                 label={'Username'}
-                placeholder={'New username...'}
                 value={info.username}
                 inputClassName={styles['input']}
                 onChange={value => update('username', value)}
@@ -111,7 +110,6 @@ export const AccountDetails = () => {
                     type={'password'}
                     label={'Current password'}
                     name={'current-password'}
-                    placeholder={'Current password...'}
                     inputClassName={styles['input']}
                     onChange={value => update('currentPassword', value)}
                 />
@@ -119,7 +117,6 @@ export const AccountDetails = () => {
                     type={'password'}
                     label={'New password'}
                     name={'new-password'}
-                    placeholder={'New password...'}
                     inputClassName={styles['input']}
                     onChange={value => update('newPassword', value)}
                 />
@@ -135,8 +132,9 @@ export const AccountDetails = () => {
                 <Button 
                     onClick={save}
                     disabled={!saveAllowed}
+                    loading={saving}
                 >
-                    {saving ? 'Saving Changes...' : 'Save Changes'}
+                    Save Changes
                 </Button>
             </div>
         </AccountCard>
