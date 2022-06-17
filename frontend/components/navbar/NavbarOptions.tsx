@@ -31,7 +31,10 @@ export const NavbarOptions = () => {
             {userInfo ? (
                 <NavbarUser user={userInfo} />
             ) : (
-                <Button onClick={() => router.push(`/login?redirect_uri=${encodeURIComponent(router.asPath)}`)}>
+                <Button 
+                    onClick={() => router.push(`/login?redirect_uri=${encodeURIComponent(router.asPath)}`)}
+                    className={styles['login-button']}
+                >
                     Sign in
                 </Button>
             )}
