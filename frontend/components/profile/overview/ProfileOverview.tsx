@@ -16,6 +16,7 @@ export const ProfileOverview = () => {
             <title>
                 {identity?.username} - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
+            <meta name="og:title" content={`${identity?.username} - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
         </Head>
 
         <div className={styles['overview-container']}>

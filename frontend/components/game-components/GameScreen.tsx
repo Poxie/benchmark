@@ -16,7 +16,9 @@ export const GameScreen: React.FC<{
                 <title>
                     {gameName} - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
                 </title>
+                <meta name="og:title" content={`${gameName} - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
                 <meta name="description" content={gameDescription} />
+                <meta name="og:description" content={gameDescription} />
             </Head>
 
             <MainScreen 

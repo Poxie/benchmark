@@ -18,6 +18,7 @@ export const ProfileGameStats: React.FC<{gameId: string}> = ({ gameId }) => {
             <title>
                 {info?.username} - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
+            <meta name="og:title" content={`${info?.username} - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
         </Head>
 
         <div className={styles['container']}>

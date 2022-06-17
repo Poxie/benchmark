@@ -113,6 +113,9 @@ export const LoginPage = () => {
             <title>
                 Login - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
+            <meta name="og:title" content={`Login - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
+            <meta name="description" content={`Login to save the scores you achieve.`} />
+            <meta name="og:description" content={`Login to save the scores you achieve.`} />
         </Head>
 
         <div className={styles['container']}>

@@ -17,6 +17,7 @@ export const Account = () => {
             <title>
                 Account - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
+            <meta name="og:title" content={`Account - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
         </Head>
         <div className={styles['container']}>
             <AccountDetails />
