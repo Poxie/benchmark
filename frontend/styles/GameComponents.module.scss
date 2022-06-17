@@ -77,8 +77,14 @@
     display: flex;
     align-items: center;
     
-    .username {
+    a {
         cursor: pointer;
+    }
+    .is-me {
+        font-style: italic;
+        margin-left: 10px;
+        font-size: 14px;
+        color: var(--text-secondary);
     }
 }
 .leaderboard-item {
