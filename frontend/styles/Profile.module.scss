@@ -66,7 +66,7 @@
     margin-bottom: 2px;
     font-size: 14px;
     color: var(--text-secondary);
-    transition: opacity .15s, background-color .15s;
+    transition: opacity .15s, background-color .15s, color .15s;
     width: 100%;
 
     &.active, &:hover {
