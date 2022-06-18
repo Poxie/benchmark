@@ -17,6 +17,8 @@ export const ProfileOverview = () => {
                 {identity?.username} - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
             <meta name="og:title" content={`${identity?.username} - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
+            <meta name="description" content={`All of ${identity?.username}'s stats.`} />
+            <meta name="og:description" content={`All of ${identity?.username}'s stats.`} />
         </Head>
 
         <div className={styles['overview-container']}>

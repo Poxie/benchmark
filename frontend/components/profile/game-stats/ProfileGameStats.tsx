@@ -19,6 +19,8 @@ export const ProfileGameStats: React.FC<{gameId: string}> = ({ gameId }) => {
                 {info?.username} - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
             </title>
             <meta name="og:title" content={`${info?.username} - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
+            <meta name="description" content={`${info?.username}'s stats for ${game.title}.`} />
+            <meta name="og:description" content={`${info?.username}'s stats for ${game.title}.`} />
         </Head>
 
         <div className={styles['container']}>
