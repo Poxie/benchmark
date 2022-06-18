@@ -47,3 +47,7 @@ export const getReadableTime = (timestamp: string, exact?: boolean) => {
     dateString += `, ${hours}:${minutes} ${ampm}`;
     return dateString;
 }
+
+export const firstLetterUppercase = (string: string) => {
+    return string[0].toUpperCase() + string.slice(1);
+}
