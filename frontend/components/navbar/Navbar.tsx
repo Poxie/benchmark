@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useDeviceType } from '../../hooks/useDeviceType';
 import { HamIcon } from '../../icons/HamIcon';
@@ -7,6 +8,7 @@ import { NavbarTabs } from './NavbarTabs';
 import { NavbarTitle } from './NavbarTitle';
 
 export const Navbar = () => {
+    const { asPath } = useRouter();
     const device = useDeviceType();
     const [show, setShow] = useState(false);
 
@@ -18,6 +20,8 @@ export const Navbar = () => {
     useEffect(() => {
         if(device !== 'mobile') close();
     }, [device]);
+    // Closing on path change
+    useEffect(close, [asPath]);
 
     const containerStyles = [
         styles['container'],
