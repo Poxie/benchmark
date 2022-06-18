@@ -8,6 +8,7 @@ import { NumberMemoryIcon } from '../../icons/NumberMemoryIcon';
 import { WordMemoryIcon } from '../../icons/WordMemoryIcon';
 import { AllGamesHeader } from './AllGamesHeader';
 import { AllGamesFilters } from './AllGamesFilters';
+import { AllGamesEmpty } from './AllGamesEmpty';
 
 const games = {
     memory: [
@@ -33,6 +34,7 @@ const allGames = () => {
     return allGames;
 }
 const filteredGames = (type: GameKeyType) => {
+    if(!games[type]?.length) return [];
     return [{
         title: games[type][0].category,
         items: games [type]
@@ -47,6 +49,9 @@ export const AllGames = () => {
             <AllGamesHeader />
             <AllGamesFilters />
             {visibleGames.map(games => <AllGamesRow {...games} key={games.title} />)}
+            {!visibleGames.length && (
+                <AllGamesEmpty />
+            )}
         </div>
     )
 }

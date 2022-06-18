@@ -91,6 +91,24 @@
         height: 55px;
     }
 }
+.empty {
+    background-color: var(--background-secondary);
+    border: 2px solid var(--background-tertiary);
+    border-radius: var(--border-radius-primary);
+    padding: var(--spacing-primary);
+    margin-bottom: var(--section-spacing);
+
+    h4 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 22px;
+    }
+    span {
+        margin-bottom: var(--spacing-primary);
+        display: block;
+        color: var(--text-secondary);
+    }
+}
 
 @media (max-width: 900px) {
     .row-items {
