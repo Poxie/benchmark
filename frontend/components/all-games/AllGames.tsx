@@ -9,6 +9,7 @@ import { WordMemoryIcon } from '../../icons/WordMemoryIcon';
 import { AllGamesHeader } from './AllGamesHeader';
 import { AllGamesFilters } from './AllGamesFilters';
 import { AllGamesEmpty } from './AllGamesEmpty';
+import Head from 'next/head';
 
 const games = {
     memory: [
@@ -45,6 +46,16 @@ export const AllGames = () => {
 
     const visibleGames = (type === 'featured' ? allGames() : filteredGames(type)) || [];
     return(
+        <>
+        <Head>
+            <title>
+                All games - {process.env.NEXT_PUBLIC_WEBSITE_NAME}
+            </title>
+            <meta name="og:title" content={`All games - ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
+            <meta name="description" content={'All of our tests gathered in one place. Mindgames, typing tests, aiming, and much more.'} />
+            <meta name="og:description" content={'All of our tests gathered in one place. Mindgames, typing tests, aiming, and much more.'} />
+        </Head>
+        
         <div className={styles['container']}>
             <AllGamesHeader />
             <AllGamesFilters />
@@ -53,5 +64,6 @@ export const AllGames = () => {
                 <AllGamesEmpty />
             )}
         </div>
+        </>
     )
 }
