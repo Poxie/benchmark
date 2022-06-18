@@ -25,15 +25,15 @@
 }
 .tabs {
     z-index: 14;
-    a {
-        margin-right: calc(var(--spacing-primary) / 2);
-        display: block;
-        color: var(--text-secondary);
-        transition: color .2s;
+}
+.tab {
+    margin-right: calc(var(--spacing-primary) / 2);
+    display: block;
+    color: var(--text-secondary);
+    transition: color .2s;
 
-        &:hover {
-            color: var(--text-primary);
-        }
+    &:hover, &.active {
+        color: var(--text-primary);
     }
 }
 .ham {
@@ -101,7 +101,7 @@
         left: 0;
         gap: var(--spacing-primary);
 
-        a {
+        .tab {
             padding: 10px 0;
             width: 100%;
             text-align: center;

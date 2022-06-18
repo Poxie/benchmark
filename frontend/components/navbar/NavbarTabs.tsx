@@ -8,14 +8,14 @@ export const NavbarTabs = () => {
     const device = useDeviceType();
 
     const tabs = [
-        { title: 'Memory', path: '/memory' },
-        { title: 'Algorithms', path: '/algorithms' },
-        { title: 'Aiming', path: '/aiming' },
-        { title: 'Typing', path: '/typing' }
+        { title: 'Memory', type: 'memory' },
+        { title: 'Algorithms', type: 'algorithms' },
+        { title: 'Aiming', type: 'aiming' },
+        { title: 'Typing', type: 'typing' }
     ];
     return(
         <div className={styles['tabs']}>
-            {tabs.map(tab => <NavbarTab {...tab} key={tab.path} />)}
+            {tabs.map(tab => <NavbarTab {...tab} key={tab.type} />)}
             {device === 'mobile' && (
                 <NavbarOptions />
             )}

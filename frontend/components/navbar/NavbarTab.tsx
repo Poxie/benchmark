@@ -1,13 +1,25 @@
 import React from 'react';
+import styles from '../../styles/Navbar.module.scss';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const NavbarTab: React.FC<{
     title: string;
-    path: string;
-}> = ({ title, path }) => {
+    type: string;
+}> = ({ title, type }) => {
+    const { type: param } = useRouter().query;
+    const path = `/all-games?type=${type}`;
+    const active = param === type;
+
+    const className = [
+        styles['tab'],
+        active ? styles['active'] : ''
+    ].join(' ');
     return(
-        <Link href={path}>
-            {title}
-        </Link>
+        <div className={className}>
+            <Link href={path}>
+                {title}
+            </Link>
+        </div>
     )
 }
