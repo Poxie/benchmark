@@ -22,6 +22,7 @@ export const NavbarOptions = () => {
     return(
         <div className={styles['right']}>
             <button 
+                aria-label='Settings'
                 className={styles['settings-button']} 
                 onClick={() => setPopup(<SettingsPopup />, settingsRef)}
                 ref={settingsRef}
