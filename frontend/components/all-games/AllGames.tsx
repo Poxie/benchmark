@@ -6,6 +6,8 @@ import { SequenceIcon } from '../../icons/SequenceIcon';
 import { ChimpIcon } from '../../icons/ChimpIcon';
 import { NumberMemoryIcon } from '../../icons/NumberMemoryIcon';
 import { WordMemoryIcon } from '../../icons/WordMemoryIcon';
+import { AllGamesHeader } from './AllGamesHeader';
+import { AllGamesFilters } from './AllGamesFilters';
 
 const games = {
     memory: [
@@ -15,6 +17,7 @@ const games = {
         { title: 'Word Memory', category: 'memory', path: 'word-memory', icon: <WordMemoryIcon /> },
     ]
 }
+export const gameKeys = ['featured', ...Object.keys(games)] as GameKeyType[];
 export type GameKeyType = keyof typeof games;
 export type GameType = typeof games.memory[0];
 export type CategoryType = { title: string, items: GameType[] };
@@ -41,6 +44,8 @@ export const AllGames = () => {
     const visibleGames = (type === 'featured' ? allGames() : filteredGames(type)) || [];
     return(
         <div className={styles['container']}>
+            <AllGamesHeader />
+            <AllGamesFilters />
             {visibleGames.map(games => <AllGamesRow {...games} key={games.title} />)}
         </div>
     )
