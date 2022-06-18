@@ -10,18 +10,33 @@ const games = {
         { title: 'Word Memory', category: 'memory', path: 'word-memory' },
     ]
 }
+export type GameKeyType = keyof typeof games;
+export type GameType = typeof games.memory;
+export type CategoryType = { title: string, items: GameType }[];
+
 const allGames = () => {
-    let allGames: typeof games['memory'] = [];
-    Object.values(games).forEach(categoryGames => allGames = [...allGames, ...categoryGames]);
+    let allGames: CategoryType = [];
+    Object.entries(games).forEach(([key, values]) => {
+        allGames.push({
+            title: values[0].category,
+            items: values
+        })
+    });
     return allGames;
 }
+const filteredGames = (type: GameKeyType) => {
+    return [{
+        title: games[type][0].category,
+        items: games [type]
+    }]
+}
 export const AllGames = () => {
-    const { type='featured' } = useRouter().query as { type: keyof typeof games | 'featured' };
+    const { type='featured' } = useRouter().query as { type: GameKeyType | 'featured' };
 
-    const visibleGames = (type === 'featured' ? allGames() : games[type]) || [];
+    const visibleGames = (type === 'featured' ? allGames() : filteredGames(type)) || [];
     return(
         <div className={styles['container']}>
-            {visibleGames.map(game => game.title)}
+            {visibleGames.map(games => games.title)}
         </div>
     )
 }
