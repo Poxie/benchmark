@@ -27,7 +27,11 @@ export const AllGamesFilters = () => {
                         active ? styles['active'] : ''
                     ].join(' ');
                     return(
-                        <button className={className} onClick={() => changeType(type)}>
+                        <button 
+                            className={className} 
+                            onClick={() => changeType(type)}
+                            key={type}
+                        >
                             {firstLetterUppercase(type)}
                         </button>
                     )
