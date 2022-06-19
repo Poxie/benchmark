@@ -13,7 +13,7 @@ export const AllGamesEmpty = () => {
             <span>
                 As of now, this filter does not exist. However, who knows, it may be a thing in the future.
             </span>
-            <Button onClick={() => router.replace('/all-games')}>
+            <Button onClick={() => router.replace({pathname: '/all-games'}, undefined, { scroll: false })}>
                 Go to a working filter
             </Button>
         </div>

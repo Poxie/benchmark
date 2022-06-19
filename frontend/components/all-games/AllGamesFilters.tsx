@@ -9,8 +9,12 @@ export const AllGamesFilters = () => {
     const { type: param='featured' } = router.query as { type: GameKeyType | 'featured' };
 
     const changeType = (type: GameKeyType | 'featured') => {
-        if(type === 'featured') return router.replace('/all-games');
-        router.replace(`/all-games?type=${type}`)
+        let query = {};
+        if(type !== 'featured') query = { type }; 
+        router.replace({
+            pathname: `/all-games`,
+            query,
+        }, undefined, { scroll: false });
     }
 
     return(
