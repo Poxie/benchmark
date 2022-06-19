@@ -126,3 +126,17 @@
     font-size: 14px;
     color: var(--text-secondary);
 }
+
+@media (max-width: 600px) {
+    .start-screen, .end-screen {
+        h1 {
+            font-size: 35px;
+        }
+        span {
+            font-size: 15px;
+        }
+        .button {
+            width: 100%;
+        }
+    }
+}
