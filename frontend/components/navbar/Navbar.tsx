@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import { useDeviceType } from '../../hooks/useDeviceType';
 import { HamIcon } from '../../icons/HamIcon';
 import styles from '../../styles/Navbar.module.scss';
@@ -36,6 +37,14 @@ export const Navbar = () => {
             </div>
             {device !== 'mobile' && (
                 <NavbarOptions />
+            )}
+            {device !== 'computer' && (
+                <motion.div
+                    animate={{ opacity: show ? 1 : 0, pointerEvents: show ? 'unset' : 'none' }}
+                    initial={{ opacity: 0, pointerEvents: 'none' }}
+                    className={styles['backdrop']}
+                    onClick={close}
+                />
             )}
         </div>
     )
