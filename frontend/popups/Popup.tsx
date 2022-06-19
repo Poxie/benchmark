@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Options, usePopup } from '../contexts/PopupProvider';
 import styles from '../styles/Popup.module.scss';
 import { ArrowIcon } from '../icons/ArrowIcon';
+import { useDeviceType } from '../hooks/useDeviceType';
 
 export const Popup: React.FC<{
     left: number;
@@ -12,6 +13,7 @@ export const Popup: React.FC<{
     options: Options | undefined;
     children: any;
 }> = ({ children, left: _left, top, canGoBack, goBackTitle, options }) => {
+    const device = useDeviceType();
     const ref = useRef<HTMLDivElement>(null);
     const { closePopups, goBack } = usePopup();
     const [left, setLeft] = useState(_left);
@@ -70,6 +72,14 @@ export const Popup: React.FC<{
                 </a>
             )}
             {children}
+            {device === 'mobile' && (
+                <span 
+                    className={styles['close']} 
+                    onClick={closePopups}
+                >
+                    Close
+                </span>
+            )}
         </motion.div>
     )
 }

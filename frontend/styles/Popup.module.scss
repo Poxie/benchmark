@@ -85,3 +85,24 @@
         cursor: default;
     }
 }
+.close {
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-top: 2px solid var(--popup-background-secondary);
+    margin-top: 8px;
+    margin-bottom: -8px;
+    padding: 16px 0;
+    cursor: pointer;
+}
+
+@media (max-width: 516px) {
+    .container {
+        top: unset !important;
+        left: 0 !important;
+        bottom: 0;
+        width: 100%;
+        border-radius: var(--border-radius-primary) var(--border-radius-primary) 0 0;
+    }
+}
