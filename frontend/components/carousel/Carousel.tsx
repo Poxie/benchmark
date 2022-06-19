@@ -109,7 +109,7 @@ export const Carousel: React.FC<{
 
         window.addEventListener('resize', resize);
         return () => window.removeEventListener('resize', resize);
-    }, []);
+    }, [itemWidth.current]);
 
     // Defining item width
     useEffect(() => {
