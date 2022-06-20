@@ -31,7 +31,9 @@ export const Navbar = () => {
     return(
         <div className={containerStyles}> 
             <div className={styles['left']}>
-                <HamIcon onClick={toggle} className={styles['ham']} />
+                <button onClick={toggle} className={styles['ham']}>
+                    <HamIcon />
+                </button>
                 <NavbarTitle />
                 <NavbarTabs />
             </div>

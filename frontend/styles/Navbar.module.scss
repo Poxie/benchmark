@@ -50,6 +50,10 @@
     margin-right: calc(var(--spacing-primary) / 2);
     cursor: pointer;
     display: none;
+
+    svg {
+        display: block;
+    }
 }
 .user {
     cursor: pointer;
