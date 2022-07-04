@@ -8,7 +8,7 @@ export class Users extends BaseEntity {
     @Column('text')
     username!: string;
 
-    @Column('text')
+    @Column('text', { default: null })
     name!: string;
 
     @Column('text')
