@@ -29,25 +29,27 @@ export const Navbar = () => {
         show ? styles['show-mobile'] : ''
     ].join(' ');
     return(
-        <div className={containerStyles}> 
-            <div className={styles['left']}>
-                <button onClick={toggle} className={styles['ham']}>
-                    <HamIcon />
-                </button>
-                <NavbarTitle />
-                <NavbarTabs />
-            </div>
-            {device !== 'mobile' && (
-                <NavbarOptions />
-            )}
-            {device !== 'computer' && (
-                <motion.div
-                    animate={{ opacity: show ? 1 : 0, pointerEvents: show ? 'unset' : 'none' }}
-                    initial={{ opacity: 0, pointerEvents: 'none' }}
-                    className={styles['backdrop']}
-                    onClick={close}
-                />
-            )}
-        </div>
+        <header> 
+            <nav className={containerStyles}>
+                <div className={styles['left']}>
+                    <button onClick={toggle} className={styles['ham']} aria-label="Expand navigation" aria-hidden={device !== 'mobile'}>
+                        <HamIcon />
+                    </button>
+                    <NavbarTitle />
+                    <NavbarTabs />
+                </div>
+                {device !== 'mobile' && (
+                    <NavbarOptions />
+                )}
+                {device !== 'computer' && (
+                    <motion.div
+                        animate={{ opacity: show ? 1 : 0, pointerEvents: show ? 'unset' : 'none' }}
+                        initial={{ opacity: 0, pointerEvents: 'none' }}
+                        className={styles['backdrop']}
+                        onClick={close}
+                    />
+                )}
+            </nav>
+        </header>
     )
 }
