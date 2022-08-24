@@ -34,9 +34,9 @@ export const HomeTile: React.FC<{
         <div className={className}>
             <div className={styles['tile-content']} ref={ref}>
                 <div className={styles['tile-text']}>
-                    <h1>
+                    <h2>
                         {title}
-                    </h1>
+                    </h2>
                     <p>
                         {description}
                     </p>
