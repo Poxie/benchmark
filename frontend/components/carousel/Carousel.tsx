@@ -142,10 +142,10 @@ export const Carousel: React.FC<{
             
             {device !== 'mobile' && shouldTransform && (
                 <div className={styles['carousel-controlls']}>
-                    <button onClick={!controllsDisabled ? () => handleClick('left') : undefined}>
+                    <button onClick={!controllsDisabled ? () => handleClick('left') : undefined} aria-label="Arrow left">
                         <ArrowCircleIcon />
                     </button>
-                    <button onClick={!controllsDisabled ? () => handleClick('right') : undefined}>
+                    <button onClick={!controllsDisabled ? () => handleClick('right') : undefined} aria-label="Arrow right">
                         <ArrowCircleIcon />
                     </button>
                 </div>
